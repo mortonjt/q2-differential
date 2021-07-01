@@ -46,4 +46,3 @@ generated quantities {
     }
   }
 }
-o
