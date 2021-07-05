@@ -2,7 +2,7 @@ data {
   int<lower=0> N;         // number of samples
   int<lower=0> D;         // number of dimensions
   real slog[N];           // log normalization constants
-  int[N] M;               // binary group membership vector
+  int M[N];               // binary group membership vector
   int y[N, D];            // observed microbe abundances
   real beta_s;            // prior for beta scale
   real alpha_s;           // scale for dispersion normal prior

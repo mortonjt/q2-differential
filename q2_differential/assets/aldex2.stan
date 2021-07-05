@@ -2,17 +2,17 @@ data {
   int<lower=0> N;       // number of samples
   int<lower=0> D;       // number of dimensions
   int depth[N];         // sequencing depths of microbes
-  int[N] M;             // binary group membership vector
+  int M[N];             // binary group membership vector
   int y[N, D];          // observed microbe abundances
 }
 
 parameters {
   // parameters required for linear regression on the species means
-  matrix[2, D] beta;
+  simplex[D] beta[2];
 }
 
 transformed parameters {
-  vector[D] prior = rep_vector(0.5, D);
+  vector<lower=0>[D] prior = rep_vector(0.5, D);
 }
 
 model {
@@ -26,14 +26,12 @@ model {
 }
 
 generated quantities {
-  matrix[N, D] y_predict;
-  matrix[N, D] p_predict;
-  vector[D] logfold_diff;
+  int y_predict[N, D];
+  vector[D] p_predict[N];
   vector[N] log_lhood;
   for (n in 1:N){
     p_predict[n,] = dirichlet_rng(to_vector(beta[M[n],]));
     y_predict[n,] = multinomial_rng(to_vector(beta[M[n],]), depth[n]);
     log_lhood[n] = multinomial_lpmf(y[n,] | to_vector(to_vector(beta[M[n],])));
   }
-  logfold_diff = log(beta[1] / beta[2]);
 }
