@@ -4,9 +4,10 @@ import numpy as np
 import pandas as pd
 import birdman
 from scipy.stats.mstats import gmean
+from birdman.model_base import TableModel
 
 
-class DESeq2(birdman.model_base.BaseModel):
+class DESeq2(TableModel):
     def __init__(self,
                  table: biom.table.Table,
                  metadata: pd.DataFrame,
@@ -22,7 +23,6 @@ class DESeq2(birdman.model_base.BaseModel):
         filepath =  os.path.join(os.path.dirname(__file__),
                                  'assets/deseq2.stan')
         super().__init__(table=table,
-                         metadata=metadata,
                          model_path=filepath,
                          num_iter=num_iter,
                          num_warmup=num_warmup,
@@ -66,7 +66,7 @@ class DESeq2(birdman.model_base.BaseModel):
         )
 
 
-class ALDEx2(birdman.model_base.BaseModel):
+class ALDEx2(TableModel):
     def __init__(self,
                  table: biom.table.Table,
                  category_column: str,
@@ -80,7 +80,6 @@ class ALDEx2(birdman.model_base.BaseModel):
         filepath =  os.path.join(os.path.dirname(__file__),
                                  'assets/aldex2.stan')
         super().__init__(table=table,
-                         metadata=metadata,
                          model_path=filepath,
                          num_iter=num_iter,
                          num_warmup=num_warmup,
@@ -97,16 +96,14 @@ class ALDEx2(birdman.model_base.BaseModel):
         }
         self.add_parameters(param_dict)
         self.specify_model(
-            params=["beta", "beta_diff", "disp"],
+            params=["beta"],
             dims={
-                "beta": ["groups", "feature"],
-                "beta_diff": ["feature"],
-                "alpha": ["feature"],
+                "beta": ["group", "feature"],
                 "log_lhood": ["tbl_sample", "feature"],
                 "y_predict": ["tbl_sample", "feature"]
             },
             coords={
-                "groups": [reference, other],
+                "group": [reference, other],
                 "feature": self.feature_names,
                 "tbl_sample": self.sample_names
             },
