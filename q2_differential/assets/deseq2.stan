@@ -12,12 +12,12 @@ parameters {
   // parameters required for linear regression on the species means
   vector[D] control;
   vector[D] beta;
-  vector[D] eps;
-  vector[2] delta;
-  real a1;
-  real a2;
-  real sigma_e;
-  real sigma_d;
+  vector[D]<lower=0> eps;
+  vector[2]<lower=0> delta;
+  real<lower=0> a1;
+  real<lower=0> a2;
+  real<lower=0> sigma_e;
+  real<lower=0> sigma_d;
 }
 
 model {
@@ -34,7 +34,7 @@ model {
   for (i in 1:N){
     vector[D] mu;
     vector[D] alpha;
-    mu = slog[i] + control + (M[i] - 1) * beta;
+    mu = slog[i] + control + (M[i] - 1) * beta);
     alpha = (rep_vector(a1, D) ./ mu) + a2 + eps + delta[M[i]];
     y[i] ~ neg_binomial_2_log(mu, alpha[M[i]]);
   }
