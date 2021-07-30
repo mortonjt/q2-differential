@@ -23,8 +23,8 @@ model {
   // generating counts
   for (i in 1:N){
     real mu;
-    mu = slog[i] + control + (M[i] - 1) * beta;
-    y[i] ~ neg_binomial_2_log(mu, alpha[M[i]]);
+    mu = slog[i] + log_inv_logit(control + (M[i] - 1) * beta);
+    y[i] ~ neg_binomial_2_log(mu, inv(alpha[M[i]]));
   }
 }
 
@@ -33,8 +33,8 @@ generated quantities {
   vector[N] log_lhood;
   for (n in 1:N){
     real mu;
-    mu = slog[n] + control + (M[n] - 1) * beta;
-    y_predict[n] = neg_binomial_2_log_rng(mu, alpha[M[n]]);
-    log_lhood[n] = neg_binomial_2_log_lpmf(y[n] | mu, alpha[M[n]]);
+    mu = slog[n] + log_inv_logit(control + (M[n] - 1) * beta);
+    y_predict[n] = neg_binomial_2_log_rng(mu, inv(alpha[M[n]]));
+    log_lhood[n] = neg_binomial_2_log_lpmf(y[n] | mu, inv(alpha[M[n]]));
   }
 }

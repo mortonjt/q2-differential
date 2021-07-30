@@ -43,21 +43,22 @@ if __name__ == '__main__':
     table = biom.load_table(args.biom_table)
     metadata = pd.read_table(args.metadata_file, index_col=0)
     # initialize just to compile model
-    SingleDESeq2(table, metadata, 'Status').compile_model()
-
+    SingleDESeq2(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
+                 category_column='Status').compile_model()
     models = ModelIterator(table, SingleDESeq2, metadata=metadata,
                            category_column='Status', chains=args.chains,
                            num_iter=args.monte_carlo_samples,
-                           num_warmup=args.monte_carlo_samples)
+                           num_warmup=1000)
 
     def _single_func(x):
         fid, m = x
+        m.compile_model()
         m.fit_model()
         return m.to_inference_object()
 
     samples = []
     with Pool(args.processes) as p:
-        for inf in p.imap(_single_func, models, chunksize=10):
+        for inf in p.imap(_single_func, models, chunksize=50):
             samples.append(inf)
     coords = {'feature' : table.ids(axis='observation')}
     samples = concatenate_inferences(samples, coords, 'feature')
