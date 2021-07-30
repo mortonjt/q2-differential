@@ -48,7 +48,6 @@ class DESeq2(TableModel):
         if reference is None:
             reference = cats[0]
         cats = (cats.values != reference).astype(np.int64) + 1
-        other = list(set(cats) - {reference})[0]
         slog = _normalization_func(table, normalization)
         control_loc = np.log(1. / len(table.ids(axis='observation')))
         control_scale = 5
