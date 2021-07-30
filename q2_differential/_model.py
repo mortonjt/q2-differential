@@ -68,9 +68,9 @@ class DESeq2(TableModel):
                 "y_predict": ["tbl_sample", "feature"]
             },
             coords={
-                "group": [reference, other],
-                "feature": self.feature_names,
-                "tbl_sample": self.sample_names
+                "groups": [reference, other],
+                "features": self.feature_names,
+                "tbl_samples": self.sample_names
             },
             include_observed_data=True,
             posterior_predictive="y_predict",
@@ -128,9 +128,9 @@ class SingleDESeq2(SingleFeatureModel):
                 "y_predict": ["tbl_sample"]
             },
             coords={
-                "group": [reference, other],
-                "feature": [f'log({other} / {reference})'],
-                "tbl_sample": self.sample_names
+                "groups": [reference, other],
+                "features": [f'log({other} / {reference})'],
+                "tbl_samples": self.sample_names
             },
             include_observed_data=True,
             posterior_predictive="y_predict",
