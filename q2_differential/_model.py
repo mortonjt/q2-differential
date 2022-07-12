@@ -20,6 +20,66 @@ def _normalization_func(table, norm='depth'):
     return slog
 
 
+class DiseaseSingle(TableModel): 
+    """A model includes multiple diseases. """
+    def __init__(self,
+                 table: biom.table.Table,
+                 feature_id : str,
+                 metadata: pd.DataFrame,
+                 category_column: str,
+                 reference: str = None,
+                 beta_s : float = 1,
+                 alpha_s : float = 1,
+                 num_iter: int = 500,
+                 num_warmup: int = None,
+                 normalization: str = 'depth',
+                 chains: int = 4,
+                 seed: float = 42):
+        filepath =  os.path.join(os.path.dirname(__file__),
+                                 'assets/disease_single.stan')
+        super().__init__(table=table,
+                         feature_id=feature_id,
+                         model_path=filepath,
+                         num_iter=num_iter,
+                         num_warmup=num_warmup,
+                         chains=chains,
+                         seed=seed)
+        cats = metadata[category_column]
+        other = list(set(cats) - {reference})[0]
+        if reference is None:
+            reference = cats[0]
+        cats = (cats.values != reference).astype(np.int64) + 1
+        other = list(set(cats) - {reference})[0]
+        slog = _normalization_func(table, normalization)
+        control_loc = np.log(1. / len(table.ids(axis='observation')))
+        control_scale = 5
+        param_dict = {
+            "slog": slog,
+            "M": cats,
+            "control_loc": control_loc,
+            "control_scale": control_scale
+        }
+        self.add_parameters(param_dict)
+        self.specify_model(
+            params=["intercept", "beta", "alpha"],
+            dims={
+                "intercept": ["feature"],
+                "beta": ["feature"],
+                "alpha": ["group"],
+                "log_lhood": ["tbl_sample"],
+                "y_predict": ["tbl_sample"]
+            },
+            coords={
+                "groups": [reference, other],
+                "features": [f'log({other} / {reference})'],
+                "tbl_samples": self.sample_names
+            },
+            include_observed_data=True,
+            posterior_predictive="y_predict",
+            log_likelihood="log_lhood"
+        )
+  
+
 class DESeq2(TableModel):
     """ A model to mimic DESeq2. """
     def __init__(self,
