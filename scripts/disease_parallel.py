@@ -3,7 +3,7 @@ import biom
 import pandas as pd
 import numpy as np
 import xarray as xr
-from q2_differential._model import SingleDESeq2
+from q2_differential._model import DiseaseSingle
 from birdman.model_util import concatenate_inferences
 from birdman import ModelIterator
 import time
@@ -43,9 +43,9 @@ if __name__ == '__main__':
     table = biom.load_table(args.biom_table)
     metadata = pd.read_table(args.metadata_file, index_col=0)
     # initialize just to compile model
-    SingleDESeq2(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
+    DiseaseSingle(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
                  category_column='Status').compile_model()
-    models = ModelIterator(table, SingleDESeq2, metadata=metadata,
+    models = ModelIterator(table, DiseaseSingle, metadata=metadata,
                            category_column='Status', chains=args.chains,
                            num_iter=args.monte_carlo_samples,
                            num_warmup=1000)
