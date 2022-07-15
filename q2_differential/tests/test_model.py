@@ -44,7 +44,11 @@ class TestDiseaseSingle(unittest.TestCase):
         self.table, self.metadata, self.diff = _case_control_negative_binomial_sim(
             n=50, d=4, depth=100)
         self.diff = clr(alr_inv(self.diff))
-
+        taxa_ids = self.table.columns
+        samp_ids = self.table.index
+        counts = self.table.values
+        self.table = biom.Table(count, taxa_id, samp_ids)
+        
     def test_stan_run(self):
         models = ModelIterator(self.table, DiseaseSingle, metadata=self.metadata,
                                category_column='Status', num_iter=128, num_warmup=1000)
