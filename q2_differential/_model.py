@@ -41,9 +41,12 @@ class DiseaseSingle(SingleFeatureModel):
                  metadata: pd.DataFrame,
                  category_column: str,
                  match_ids_column : str,
+                 batch_column : str,
                  reference: str,
                  beta_s : float = 1,
                  alpha_s : float = 1,
+                 diff_scale = 1,
+                 disp_scale = 0.1,
                  num_iter: int = 500,
                  num_warmup: int = None,
                  normalization: str = 'depth',
@@ -63,7 +66,11 @@ class DiseaseSingle(SingleFeatureModel):
         disease_encoder = LabelEncoder()
         disease_encoder.fit(cats.values)
         disease_ids = disease_encoder.transform(cats)
-                
+        # TODO : make sure that reference (aka "Healthy") == 0
+        # 1) disease_encoder.transform([reference])
+        # 2) swap reference with 0
+        diseases = disease_encoder.classes_  # careful here
+        
         # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
         
@@ -73,28 +80,51 @@ class DiseaseSingle(SingleFeatureModel):
         case_encoder.fit(case_ctrl_ids)
         case_ids = case_encoder.transform(case_ctrl_ids)
         
+        # batch ids : convert names to numbers (i.e. studies)
+        cats = metadata[batch_column]
+        batch_encoder = LabelEncoder()
+        batch_encoder.fit(cats.values)
+        batch_ids = batch_encoder.transform(cats)
+        
+        C = len(metadata) // 2
+        N = len(metadata)
+        B = len(np.unique(batch_ids))
+        D = len(np.unique(disease_ids)) - 1
+        
         control_loc = np.log(1. / len(table.ids(axis='observation')))
         control_scale = 5
         param_dict = {
-            "slog": slog,
+            "C" : C,
+            "N" : N,
+            "B" : B,
+            "D" : D,
+            "slog": slog, 
             "disease_ids": disease_ids,
-            "case_ids": case_ids,
+            "cc_ids": case_ids,                 # matching ids
+            "batch_ids" : batch_ids,            # aka study ids
             "control_loc": control_loc,
-            "control_scale": control_scale
+            "control_scale": control_scale,
+            "diff_scale": diff_scale,
+            "disp_scale": disp_scale
         }
         self.add_parameters(param_dict)
         self.specify_model(
-            params=["intercept", "beta", "alpha"],
+            # TODO: specify priors for all parameters
+            params=["a0", "a1", "a2", 
+                    "diff", "disease_disp"],
             dims={
-                "intercept": ["feature"],
-                "beta": ["feature"],
-                "alpha": ["group"],
+                "a0": ["feature"],
+                "a1": ["feature"],
+                "a2": ["feature"],
+                "diff": ["feature", "disease"],
+                "disp_scale": ["feature", "disease_1p"],
+                # TODO: fill out the dimensions for the other parameters
                 "log_lhood": ["tbl_sample"],
                 "y_predict": ["tbl_sample"]
             },
             coords={
-                "groups": [reference, other],
-                "features": [f'log({other} / {reference})'],
+                "groups": diseases,
+                "features": [f'log_fold_change'],
                 "tbl_samples": self.sample_names
             },
             include_observed_data=True,
