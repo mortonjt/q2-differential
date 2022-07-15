@@ -20,7 +20,7 @@ def _normalization_func(table, norm='depth'):
     return slog
 
 
-class DiseaseSingle(TableModel): 
+class DiseaseSingle(SingleFeatureModel): 
     """A model includes multiple diseases. """
     def __init__(self,
                  table: biom.table.Table,
