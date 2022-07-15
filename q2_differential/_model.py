@@ -5,6 +5,7 @@ import pandas as pd
 import birdman
 from scipy.stats.mstats import gmean
 from birdman.model_base import TableModel, SingleFeatureModel
+from sklearn.preprocessing import LabelEncoder
 import warnings
 
 
@@ -21,13 +22,26 @@ def _normalization_func(table, norm='depth'):
 
 
 class DiseaseSingle(SingleFeatureModel): 
-    """A model includes multiple diseases. """
+    """A model includes multiple diseases. 
+    
+    Parameters
+    ----------
+    table : biom.Table
+        Table of counts
+    feature_id : str
+        Name of feature of interest
+    metadata : pd.DataFrame
+        Sample metadata file
+    ...
+    
+    """
     def __init__(self,
-                 table: biom.table.Table,
+                 table: biom.Table,
                  feature_id : str,
                  metadata: pd.DataFrame,
                  category_column: str,
-                 reference: str = None,
+                 match_ids_column : str,
+                 reference: str,
                  beta_s : float = 1,
                  alpha_s : float = 1,
                  num_iter: int = 500,
@@ -44,18 +58,27 @@ class DiseaseSingle(SingleFeatureModel):
                          num_warmup=num_warmup,
                          chains=chains,
                          seed=seed)
+        # pulls down the category information (i.e. health vs different diseases)
         cats = metadata[category_column]
-        other = list(set(cats) - {reference})[0]
-        if reference is None:
-            reference = cats[0]
-        cats = (cats.values != reference).astype(np.int64) + 1
-        other = list(set(cats) - {reference})[0]
+        disease_encoder = LabelEncoder()
+        disease_encoder.fit(cats.values)
+        disease_ids = disease_encoder.transform(cats)
+                
+        # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
+        
+        # match ids : convert names to numbers
+        case_encoder = LabelEncoder()
+        case_ctrl_ids = metadata[match_ids_column].values
+        case_encoder.fit(case_ctrl_ids)
+        case_ids = case_encoder.transform(case_ctrl_ids)
+        
         control_loc = np.log(1. / len(table.ids(axis='observation')))
         control_scale = 5
         param_dict = {
             "slog": slog,
-            "M": cats,
+            "disease_ids": disease_ids,
+            "case_ids": case_ids,
             "control_loc": control_loc,
             "control_scale": control_scale
         }
