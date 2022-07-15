@@ -20,9 +20,9 @@ class TestDiseaseSingle(unitest.TestCase):
         models = ModelIterator(self.table, DiseaseSingle, metadata=self.metadata,
                                category_column='Status', num_iter=128, num_warmup=1000)
         for fid, m in models:
-        m.compile_model()
-        m.fit_model()
-        m.to_inference_object()
+            m.compile_model()
+            m.fit_model()
+            m.to_inference_object()
 
 class TestDEseq2(unittest.TestCase):
     def setUp(self):
