@@ -8,6 +8,7 @@ from birdman import ModelIterator
 from xarray.ufuncs import log2 as xlog
 import pandas.testing as pdt
 from q2_differential._stan import _case_control_negative_binomial_sim
+from skbio.stats.composition import alr_inv, clr
 
 #class TestDEseq2(unittest.TestCase):
 #    def setUp(self):

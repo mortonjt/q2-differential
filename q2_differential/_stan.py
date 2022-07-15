@@ -13,6 +13,15 @@ from scipy.stats import nbinom
 
 #https://github.com/flatironinstitute/q2-matchmaker/blob/main/q2_matchmaker/_stan.py#L72
 
+def negative_binomial_rvs(mu, alpha, state=None):
+    """ Uses mean / phi reparameterization of scipy negative binomial"""
+
+    sigma2 = mu + alpha * mu ** 2
+    p = mu / sigma2
+    n = (mu ** 2) / (sigma2 - mu)
+    return nbinom.rvs(n, p, random_state=state)
+
+
 def _case_control_negative_binomial_sim(n=100, b=2, d=10, depth=50,
                                         disp_scale = 0.1,
                                         batch_scale = 0.1,
