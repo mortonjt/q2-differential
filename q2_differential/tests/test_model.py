@@ -40,7 +40,7 @@ class TestSingleDEseq2(unittest.TestCase):
 class TestDiseaseSingle(unittest.TestCase):
     def setUp(self):
         np.random.seed(0)
-        self.table, self.metadata, self.diff = _case_control_sim(
+        self.table, self.metadata, self.diff = _case_control_negative_binomial_sim(
             n=50, d=4, depth=100)
         self.diff = clr(alr_inv(self.diff))
 
