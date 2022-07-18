@@ -122,8 +122,8 @@ class DiseaseSingle(SingleFeatureModel):
                 "diff": ["feature", "disease"],
                 "disp_scale": ["feature", "disease_1p"],
                 # TODO: fill out the dimensions for the other parameters
-                "log_lhood": ["tbl_sample"],
-                "y_predict": ["tbl_sample"]
+                "log_lhood": ["tbl_sample", "disease"],
+                "y_predict": ["tbl_sample", "disease"]
             },
             coords={
                 "groups": disease,
