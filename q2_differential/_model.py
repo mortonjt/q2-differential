@@ -126,7 +126,7 @@ class DiseaseSingle(SingleFeatureModel):
                 "y_predict": ["tbl_sample"]
             },
             coords={
-                "groups": diseases,
+                "groups": disease,
                 "features": [f'log_fold_change'],
                 "tbl_samples": self.sample_names
             },
