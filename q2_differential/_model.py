@@ -63,14 +63,17 @@ class DiseaseSingle(SingleFeatureModel):
                          seed=seed)
         # pulls down the category information (i.e. health vs different diseases)
         cats = metadata[category_column]
+        #LableEncoder values were ranked by letters
+        cats = cats.replace("Healthy", "AAHealthy") 
         disease_encoder = LabelEncoder()
         disease_encoder.fit(cats.values)
         disease_ids = disease_encoder.transform(cats)
         # TODO : make sure that reference (aka "Healthy") == 0
         # 1) disease_encoder.transform([reference])
         # 2) swap reference with 0
-        diseases = disease_encoder.classes_  # careful here
-        
+        #changed "Healthy" to "AAHealthy" to make sure reference == 0
+
+        #diseases = disease_encoder.classes_  # careful here
         # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
         
