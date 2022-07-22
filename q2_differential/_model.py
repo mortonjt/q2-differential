@@ -73,7 +73,7 @@ class DiseaseSingle(SingleFeatureModel):
         # 2) swap reference with 0
         #changed "Healthy" to "AAHealthy" to make sure reference == 0
 
-        #diseases = disease_encoder.classes_  # careful here
+        disease = disease_encoder.classes_[1:]  # careful here
         # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
         
@@ -96,6 +96,7 @@ class DiseaseSingle(SingleFeatureModel):
         
         control_loc = np.log(1. / len(table.ids(axis='observation')))
         control_scale = 5
+        batch_scale = 3
         param_dict = {
             "C" : C,
             "N" : N,
@@ -107,6 +108,7 @@ class DiseaseSingle(SingleFeatureModel):
             "batch_ids" : batch_ids,            # aka study ids
             "control_loc": control_loc,
             "control_scale": control_scale,
+            "batch_scale":batch_scale,
             "diff_scale": diff_scale,
             "disp_scale": disp_scale
         }

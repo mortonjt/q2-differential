@@ -10,6 +10,7 @@ import json
 import xarray as xr
 import arviz as az
 from scipy.stats import nbinom
+from q2_differential._matching import _matchmaker
 
 #https://github.com/flatironinstitute/q2-matchmaker/blob/main/q2_matchmaker/_stan.py#L72
 
@@ -85,10 +86,11 @@ def _case_control_negative_binomial_sim(n=100, b=2, d=10, depth=50,
         batch_ids,
         np.array([b - 1] * (n - len(batch_ids)))
     )).astype(np.int64)
-    cc_bool = np.arange(n) % 2  # case or control
+    cc_bool = np.arange(n) % 2  # healthy or disease1 or disease2
     cc_ids = np.repeat(np.arange(c), 2)
     y = np.zeros((n, d))
     # model simulation
+    #TO DO: modify this to simulate multiple diseases
     for s in range(n):
         for i in range(d):
             # control counts
@@ -105,9 +107,15 @@ def _case_control_negative_binomial_sim(n=100, b=2, d=10, depth=50,
     oids = [f'o{x}' for x in range(d)]
     sids = [f's{x}' for x in range(n)]
     table = pd.DataFrame(y, index=sids, columns=oids)
+    #TO DO: add match_ids_column, batch_column, and reference
     md = pd.DataFrame({'cc_bool': cc_bool.astype(np.str),
                        'cc_ids': cc_ids.astype(np.str),
                        'batch_ids': batch_ids.astype(np.str)},
+                       #'match_ids_column':
+                       #'batch_column':
+                       #'reference':},
                       index=sids)
     md.index.name = 'sample id'
-    return table, md, diff
+    return md
+metadata = pd.read_table('/mnt/home/djin/ceph/snakemake/data/Qin2010IBD/Qin2010IBD_metadata.txt',
+                              index_col=0)

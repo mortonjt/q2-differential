@@ -3,7 +3,7 @@ data {
   int<lower=0> N;         // number of samples
   int<lower=0> B;         // number of batches
   int<lower=0> D;         // number of diseases
-  real depth[N];          // log sequencing depths of microbes
+  real slog[N];          // log sequencing depths of microbes
   int y[N];               // observed microbe abundances
   int cc_ids[N];          // control ids
   int batch_ids[N];       // batch ids
@@ -38,11 +38,9 @@ transformed parameters {
   for (n in 1:N) {
     real delta = 0;
     if (disease_ids[n] > 0) // if not control
-        delta = diff[disease_ids[n]]
-    
-    lam[n] = depth[n] + control[cc_ids[n]] + delta + batch_mu[batch_ids[n]]
-  
-    phi[n] = inv(exp(a1 - lam[n]) + disease_disp[disease_id[n] + 1] + batch_disp[batch_ids[n]]);
+        delta = diff[disease_ids[n]];
+    lam[n] = slog[n] + control[cc_ids[n]] + delta + batch_mu[batch_ids[n]];
+    phi[n] = inv(exp(a1 - lam[n]) + disease_disp[disease_ids[n] + 1] + batch_disp[batch_ids[n]]);
     //phi[n] = inv(disp[cc_bool[n] + 1]);
   }
 }
@@ -50,7 +48,7 @@ transformed parameters {
 model {
   // setting priors ...
   a1 ~ normal(1, 1);
-  disp ~ lognormal(log(0.1), disp_scale);
+  disease_disp ~ lognormal(log(0.1), disp_scale);
   batch_mu ~ normal(0, 3);
   batch_disp ~ lognormal(log(0.1), batch_scale);
   //disp ~ lognormal(log(10), disp_scale);
