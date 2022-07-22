@@ -20,7 +20,14 @@ def _normalization_func(table, norm='depth'):
         raise ValueError('`normalization` must be specified.')
     return slog
 
-
+def _swap(vec, x, y):
+    idx = (vec == x)
+    idy = (vec == y)
+    new_vec = vec.copy()
+    new_vec[idx] = vec[idy]
+    new_vec[idy] = vec[idx]
+    return new_vec
+    
 class DiseaseSingle(SingleFeatureModel): 
     """A model includes multiple diseases. 
     
@@ -64,14 +71,18 @@ class DiseaseSingle(SingleFeatureModel):
         # pulls down the category information (i.e. health vs different diseases)
         cats = metadata[category_column]
         #LableEncoder values were ranked by letters
-        cats = cats.replace("Healthy", "AAHealthy") 
+        #cats = cats.replace("Healthy", "AAHealthy") 
         disease_encoder = LabelEncoder()
         disease_encoder.fit(cats.values)
         disease_ids = disease_encoder.transform(cats)
-        # TODO : make sure that reference (aka "Healthy") == 0
-        # 1) disease_encoder.transform([reference])
-        # 2) swap reference with 0
-        #changed "Healthy" to "AAHealthy" to make sure reference == 0
+        # Swap with reference
+        reference_cat = disease_encoder.transform([reference])
+        first_cat = disease_encoder.transform(cats[0])
+        disease_ids = _swap(disease_ids, first_cat, reference_cat)
+        classes_ = disease_encoder.classes_.copy()
+        disease_encoder.classes_ = _swap(classes_, 0, 
+                                         classes_[classes_ == reference_cat][0])
+        
 
         disease = disease_encoder.classes_[1:]  # careful here
         # sequence depth normalization constant
@@ -103,9 +114,9 @@ class DiseaseSingle(SingleFeatureModel):
             "B" : B,
             "D" : D,
             "slog": slog, 
-            "disease_ids": disease_ids,
-            "cc_ids": case_ids,                 # matching ids
-            "batch_ids" : batch_ids,            # aka study ids
+            "disease_ids": disease_ids + 1,
+            "cc_ids": case_ids + 1,                 # matching ids
+            "batch_ids" : batch_ids + 1,            # aka study ids
             "control_loc": control_loc,
             "control_scale": control_scale,
             "batch_scale":batch_scale,
