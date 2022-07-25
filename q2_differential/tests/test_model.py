@@ -10,7 +10,7 @@ import pandas.testing as pdt
 from q2_differential._stan import _case_control_negative_binomial_sim
 from q2_differential._matching import _matchmaker
 from skbio.stats.composition import alr_inv, clr
-
+from biom.table import Table
 #class TestDEseq2(unittest.TestCase):
 #    def setUp(self):
 #        self.table = biom.load_table(get_data_path('table.biom'))
@@ -38,10 +38,25 @@ from skbio.stats.composition import alr_inv, clr
 #            m.compile_model()
 #            m.fit_model()
 #            m.to_inference_object()
+data = np.arange(36).reshape(6,6)
+sample_ids = sample_ids = ['S%d' % i for i in range(6)]
+observ_ids = ['O%d' % i for i in range(6)]
+sample_metadata = [{'sampleid': 'SRR7057621'}, {'sampleid': 'SRR7057622'},
+                   {'sampleid': 'SRR7057623'}, {'sampleid': 'SRR7057624'},
+                   {'sampleid': 'SRR7057625'}, {'sampleid': 'SRR7057653'}]
+observ_metadata = [{'taxonomy': ['Bacteria', 'Firmicutes']},
+                   {'taxonomy': ['Bacteria', 'Proteobacteria']},
+                   {'taxonomy': ['Bacteria', 'Bacteroidetes']},
+                   {'taxonomy': ['Bacteria', 'Firmicutes']},
+                   {'taxonomy': ['Bacteria', 'Firmicutes']},
+                   {'taxonomy': ['Bacteria', 'Firmicutes']}]
+table36 = Table(data, observ_ids, sample_ids, observ_metadata,
+                sample_metadata, table_id='Example Table')
 
 class TestDiseaseSingle(unittest.TestCase):
     def setUp(self):
-        self.table = biom.load_table(get_data_path('biom_test_6.biom'))
+#        self.table = biom.load_table(get_data_path('biom_test_6.biom'))
+        self.table = table36
         self.metadata = pd.read_table(get_data_path('sample_metadata_6.txt'),
                                       index_col=0)
 #    def setUp(self):
@@ -58,7 +73,8 @@ class TestDiseaseSingle(unittest.TestCase):
 #    
     def test_stan_run(self):
         models = ModelIterator(self.table, DiseaseSingle, metadata=self.metadata,
-                               match_ids_column='match_ids_column',batch_column='batch_column',reference='reference',
+                               match_ids_column='match_ids_column',
+                               batch_column='batch_column',reference='Healthy',
                                category_column='Status', num_iter=128, num_warmup=1000)
         for fid, m in models:
             m.compile_model()

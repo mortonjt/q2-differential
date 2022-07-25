@@ -24,8 +24,8 @@ def _swap(vec, x, y):
     idx = (vec == x)
     idy = (vec == y)
     new_vec = vec.copy()
-    new_vec[idx] = vec[idy]
-    new_vec[idy] = vec[idx]
+    new_vec[idx] = y
+    new_vec[idy] = x
     return new_vec
     
 class DiseaseSingle(SingleFeatureModel): 
@@ -77,15 +77,16 @@ class DiseaseSingle(SingleFeatureModel):
         disease_ids = disease_encoder.transform(cats)
         # Swap with reference
         reference_cat = disease_encoder.transform([reference])
-        first_cat = disease_encoder.transform(cats[0])
+        first_cat = disease_encoder.transform([cats[0]])
         disease_ids = _swap(disease_ids, first_cat, reference_cat)
         classes_ = disease_encoder.classes_.copy()
-        disease_encoder.classes_ = _swap(classes_, 0, 
-                                         classes_[classes_ == reference_cat][0])
+        disease_encoder.classes_ = _swap(classes_, classes_[0], 
+                                         classes_[classes_ == reference][0])
         
 
         disease = disease_encoder.classes_[1:]  # careful here
-        # sequence depth normalization constant
+        #disease = disease_encoder.classes_
+         # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
         
         # match ids : convert names to numbers
@@ -114,7 +115,7 @@ class DiseaseSingle(SingleFeatureModel):
             "B" : B,
             "D" : D,
             "slog": slog, 
-            "disease_ids": disease_ids + 1,
+            "disease_ids": disease_ids,
             "cc_ids": case_ids + 1,                 # matching ids
             "batch_ids" : batch_ids + 1,            # aka study ids
             "control_loc": control_loc,
@@ -132,14 +133,14 @@ class DiseaseSingle(SingleFeatureModel):
                 "a0": ["feature"],
                 "a1": ["feature"],
                 "a2": ["feature"],
-                "diff": ["feature", "disease"],
+                "diff": ["feature", "disease_ids"],
                 "disp_scale": ["feature", "disease_1p"],
                 # TODO: fill out the dimensions for the other parameters
-                "log_lhood": ["tbl_sample", "disease"],
-                "y_predict": ["tbl_sample", "disease"]
+                "log_lhood": ["tbl_sample"],
+                "y_predict": ["tbl_sample"]
             },
             coords={
-                "groups": disease,
+                "groups": [reference, list(disease)],
                 "features": [f'log_fold_change'],
                 "tbl_samples": self.sample_names
             },
