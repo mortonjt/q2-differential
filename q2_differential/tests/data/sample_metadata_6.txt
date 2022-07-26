@@ -1,0 +1,7 @@
+sampleid	Status	Study_id	match_ids_column	batch_column	reference
+SRR7057621	ASD	0	0	0	ASD
+SRR7057622	ASD	0	1	0	ASD
+SRR7057623	IBD	1	2	1	IBD
+SRR7057624	Healthy	0	0	0	Healthy
+SRR7057625	Healthy	0	1	0	Healthy
+SRR7057653	Healthy	1	2	1	Healthy

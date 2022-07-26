@@ -23,7 +23,7 @@ def negative_binomial_rvs(mu, alpha, state=None):
     return nbinom.rvs(n, p, random_state=state)
 
 
-def _case_control_negative_binomial_sim(n=40, b=2, d=4, depth=50,
+def _case_control_negative_binomial_sim(n=60, b=2, d=4, depth=50,
                                         disp_scale = 0.1,
                                         batch_scale = 0.1,
                                         diff_scale = 1,
@@ -70,6 +70,7 @@ def _case_control_negative_binomial_sim(n=40, b=2, d=4, depth=50,
     a1 = state.normal(eps, eps, size=d)
     diff = params.get('diff', state.normal(0, diff_scale, size=d))
     disp = params.get('disp', state.lognormal(np.log(delta), disp_scale, size=(3, d)))
+
     batch_mu = params.get('batch_mu', state.normal(0, 1, size=(b, d)))
     batch_disp = params.get('batch_disp', state.lognormal(np.log(delta), batch_scale, size=(b, d)))
     control_mu = params.get('control_mu', state.normal(control_loc, 1, size=(d)))
@@ -94,7 +95,7 @@ def _case_control_negative_binomial_sim(n=40, b=2, d=4, depth=50,
     #cc_bool = np.arange(n) % 3 #healthy or disease1 or disease2
     cc_ids = np.repeat(np.arange(c), 2)
     y = np.zeros((n, d))
-    #print(y)
+    print('y')
     # model simulation
     #TO DO: modify this to simulate multiple diseases
     for s in range(n):
