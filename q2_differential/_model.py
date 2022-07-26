@@ -82,7 +82,9 @@ class DiseaseSingle(SingleFeatureModel):
         classes_ = disease_encoder.classes_.copy()
         disease_encoder.classes_ = _swap(classes_, classes_[0], 
                                          classes_[classes_ == reference][0])
-        
+        #create an additional dictionary for disease classes and numbers
+        disease_name_mapping = dict(zip(disease_encoder.classes_,
+                                        disease_encoder.transform(disease_encoder.classes_))) 
 
         disease = disease_encoder.classes_[1:]  # careful here
         #disease = disease_encoder.classes_
