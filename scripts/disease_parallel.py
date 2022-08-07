@@ -65,4 +65,15 @@ if __name__ == '__main__':
             samples.append(inf)
     coords = {'feature' : table.ids(axis='observation')}
     samples = concatenate_inferences(samples, coords, 'feature')
-    samples.to_netcdf(args.output_inference)
+#    samples.to_netcdf(args.output_inference)
+    dat = {
+        "F":table.shape[0],#number of features
+        "N":table.shape[1],#number of samples
+    }
+    obs = az.from_dict(
+        observed_data={"observed": dat["y"]},
+        coords={"tbl_sample": sample_names},
+        dims={"observed": ["tbl_sample"]}
+    )
+    inference = az.concat(samples, obs)
+    inference.to_netcdf(args.output_inference)

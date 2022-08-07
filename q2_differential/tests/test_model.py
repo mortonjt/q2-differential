@@ -11,6 +11,8 @@ from q2_differential._stan import _case_control_negative_binomial_sim
 from q2_differential._matching import _matchmaker
 from skbio.stats.composition import alr_inv, clr
 from biom.table import Table
+from multiprocessing import Pool
+from birdman.model_util import concatenate_inferences
 #class TestDEseq2(unittest.TestCase):
 #    def setUp(self):
 #        self.table = biom.load_table(get_data_path('table.biom'))
@@ -40,7 +42,6 @@ from biom.table import Table
 #            m.to_inference_object()
 
 #Create a biom table contains 6 features and 6 samples
-
 #data = np.arange(36).reshape(6,6)
 #sample_ids = sample_ids = ['S%d' % i for i in range(6)]
 #observ_ids = ['O%d' % i for i in range(6)]
@@ -56,39 +57,43 @@ from biom.table import Table
 #table36 = Table(data, observ_ids, sample_ids, observ_metadata,
 #                sample_metadata, table_id='Example Table')
 
-#class TestDiseaseSingle(unittest.TestCase):
-#    def setUp(self):
-#        self.table = biom.load_table(get_data_path('biom_test_6.biom'))
-#        self.table = table36
-#        self.metadata = pd.read_table(get_data_path('sample_metadata_6.txt'),
-#                                      index_col=0)
-
-
-
-
-
-
 class TestDiseaseSingle(unittest.TestCase):
     def setUp(self):
-        np.random.seed(0)
-        self.table, self.metadata, self.diff = _case_control_negative_binomial_sim(
-            n=40, d=4, depth=100)
-        self.diff = clr(alr_inv(self.diff))
-        observation_ids = list(self.table.columns)
-        sample_ids = list(self.table.index)
-        count = self.table.values.T
-        self.table = Table(count,observation_ids, sample_ids)
+        self.table = biom.load_table(get_data_path('table36new.biom'))
+#        self.table = table36new.biom
+        self.metadata = pd.read_table(get_data_path('sample_metadata_6.txt'),
+                                      index_col=0)
+
+#class TestDiseaseSingle(unittest.TestCase):
+#    def setUp(self):
+#        np.random.seed(0)
+#        self.table, self.metadata, self.diff = _case_control_negative_binomial_sim(
+#            n=40, d=4, depth=100)
+#        self.diff = clr(alr_inv(self.diff))
+#        observation_ids = list(self.table.columns)
+#        sample_ids = list(self.table.index)
+ #       count = self.table.values.T
+#        self.table = Table(count,observation_ids, sample_ids)
         #matchmaker control and disease
         #self.metadata = _matchmaker(self.metadata,cc_bool,True)
     def test_stan_run(self):
         models = ModelIterator(self.table, DiseaseSingle, metadata=self.metadata,
-                               match_ids_column='cc_ids',
-                               batch_column='batch_ids',reference='0',
-                               category_column='cc_bool', num_iter=128, num_warmup=1000)
-        for fid, m in models:
+                               match_ids_column='match_ids_column',
+                               batch_column='batch_column',reference='Healthy',
+                               category_column='Status', num_iter=128, num_warmup=1000)
+        def _single_func(x):
+            fid, m = x
             m.compile_model()
             m.fit_model()
-            m.to_inference_object()
+            return m.to_inference_object()
+
+#        samples = []
+#        for m in models:
+#            m = _single_func
+#            samples.append(m)
+#        coords = {'feature' : self.table.ids(axis='observation')}
+#        samples = concatenate_inferences(samples, coords, 'feature')
+#        samples.to_netcdf('test2.nc')
 
 if __name__ == '__main__':
     unittest.main()

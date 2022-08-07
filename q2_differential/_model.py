@@ -58,7 +58,9 @@ class DiseaseSingle(SingleFeatureModel):
                  num_warmup: int = None,
                  normalization: str = 'depth',
                  chains: int = 4,
-                 seed: float = 42):
+                 seed: float = 42,
+                ):
+
         filepath =  os.path.join(os.path.dirname(__file__),
                                  'assets/disease_single.stan')
         super().__init__(table=table,
@@ -70,11 +72,16 @@ class DiseaseSingle(SingleFeatureModel):
                          seed=seed)
         # pulls down the category information (i.e. health vs different diseases)
         cats = metadata[category_column]
+        #print("#1")
+        #print(cats.value_counts())
         #LableEncoder values were ranked by letters
         #cats = cats.replace("Healthy", "AAHealthy") 
         disease_encoder = LabelEncoder()
         disease_encoder.fit(cats.values)
         disease_ids = disease_encoder.transform(cats)
+        #2 print
+        #print("#2")
+        #print(disease_ids)
         # Swap with reference
         reference_cat = disease_encoder.transform([reference])
         first_cat = disease_encoder.transform([cats[0]])
@@ -87,6 +94,9 @@ class DiseaseSingle(SingleFeatureModel):
                                         disease_encoder.transform(disease_encoder.classes_))) 
 
         disease = disease_encoder.classes_[1:]  # careful here
+        #print("#3")
+        #print(disease)
+        #print(disease_ids)
         #disease = disease_encoder.classes_
          # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
@@ -102,10 +112,13 @@ class DiseaseSingle(SingleFeatureModel):
         batch_encoder = LabelEncoder()
         batch_encoder.fit(cats.values)
         batch_ids = batch_encoder.transform(cats)
-        
+        #number of controls 
         C = len(metadata) // 2
+        #number of samples
         N = len(metadata)
+        #number of batches
         B = len(np.unique(batch_ids))
+        #number of diseases
         D = len(np.unique(disease_ids)) - 1
         
         control_loc = np.log(1. / len(table.ids(axis='observation')))
@@ -148,7 +161,7 @@ class DiseaseSingle(SingleFeatureModel):
             },
             include_observed_data=True,
             posterior_predictive="y_predict",
-            log_likelihood="log_lhood"
+            log_likelihood="log_lhood",
         )
   
 
