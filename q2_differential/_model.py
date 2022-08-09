@@ -27,7 +27,7 @@ def _swap(vec, x, y):
     new_vec[idx] = y
     new_vec[idy] = x
     return new_vec
-    
+
 class DiseaseSingle(SingleFeatureModel): 
     """A model includes multiple diseases. 
     
@@ -58,8 +58,7 @@ class DiseaseSingle(SingleFeatureModel):
                  num_warmup: int = None,
                  normalization: str = 'depth',
                  chains: int = 4,
-                 seed: float = 42,
-                ):
+                 seed: float = 42):
 
         filepath =  os.path.join(os.path.dirname(__file__),
                                  'assets/disease_single.stan')
@@ -70,6 +69,11 @@ class DiseaseSingle(SingleFeatureModel):
                          num_warmup=num_warmup,
                          chains=chains,
                          seed=seed)
+        values = table.data(
+            id=feature_id,
+            axis="observation",
+            dense=True
+            ).astype(int)
         # pulls down the category information (i.e. health vs different diseases)
         cats = metadata[category_column]
         #print("#1")
@@ -137,7 +141,8 @@ class DiseaseSingle(SingleFeatureModel):
             "control_scale": control_scale,
             "batch_scale":batch_scale,
             "diff_scale": diff_scale,
-            "disp_scale": disp_scale
+            "disp_scale": disp_scale,
+            "y":values
         }
         self.add_parameters(param_dict)
         self.specify_model(
@@ -152,7 +157,8 @@ class DiseaseSingle(SingleFeatureModel):
                 "disp_scale": ["feature", "disease_1p"],
                 # TODO: fill out the dimensions for the other parameters
                 "log_lhood": ["tbl_sample"],
-                "y_predict": ["tbl_sample"]
+                "y_predict": ["tbl_sample"],
+                "y":["tbl_sample"]
             },
             coords={
                 "groups": [reference, list(disease)],
@@ -160,6 +166,7 @@ class DiseaseSingle(SingleFeatureModel):
                 "tbl_samples": self.sample_names
             },
             include_observed_data=True,
+            
             posterior_predictive="y_predict",
             log_likelihood="log_lhood",
         )
@@ -224,7 +231,7 @@ class DESeq2(TableModel):
 
 
 class SingleDESeq2(SingleFeatureModel):
-    """ A model to mimic DESeq2. """
+    """ A model to mimic DESeq2. """    
     def __init__(self,
                  table: biom.table.Table,
                  feature_id : str,

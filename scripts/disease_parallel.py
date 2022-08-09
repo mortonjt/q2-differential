@@ -72,8 +72,8 @@ if __name__ == '__main__':
     }
     obs = az.from_dict(
         observed_data={"observed": dat["y"]},
-        coords={"tbl_sample": sample_names},
-        dims={"observed": ["tbl_sample"]}
+        coords={"tbl_sample": table.ids(axis="sample")},
+        dims={"observed": ["tbl_sample","feature"]}
     )
     inference = az.concat(samples, obs)
     inference.to_netcdf(args.output_inference)
