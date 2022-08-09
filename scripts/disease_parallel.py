@@ -71,7 +71,7 @@ if __name__ == '__main__':
         "N":table.shape[1],#number of samples
     }
     obs = az.from_dict(
-        observed_data={"observed": dat["y"]},
+    #    observed_data={"observed": dat["y"]},
         coords={"tbl_sample": table.ids(axis="sample")},
         dims={"observed": ["tbl_sample","feature"]}
     )
