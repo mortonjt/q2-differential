@@ -91,8 +91,8 @@ class TestDiseaseSingle(unittest.TestCase):
 
         samples = []
         for m in models:
-            m = _single_func
-            samples.append(m)
+            inf = _single_func(m)
+            samples.append(inf)
         coords = {'feature' : self.table.ids(axis='observation')}
 #        samples = concatenate_inferences(samples, coords, 'feature')
 #        samples.to_netcdf('test2.nc')
