@@ -12,4 +12,4 @@ python disease_parallel.py --biom-table \
                            --metadata-file \
                            /mnt/home/djin/ceph/git/q2-differential/q2_differential/tests/data/sample_metadata_6.txt \
                            --groups Status --control-group Healthy \
-                           --output-inference test.nc
+                           --output-inference test2.nc
