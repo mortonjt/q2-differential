@@ -100,7 +100,7 @@ class DiseaseSingle(SingleFeatureModel):
         disease = disease_encoder.classes_[1:]  # careful here
         #print("#3")
         #print(disease)
-        #print(disease_ids)
+        print(disease_ids)
         #disease = disease_encoder.classes_
          # sequence depth normalization constant
         slog = _normalization_func(table, normalization)

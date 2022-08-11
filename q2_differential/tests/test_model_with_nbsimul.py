@@ -57,27 +57,25 @@ from birdman.model_util import concatenate_inferences
 #table36 = Table(data, observ_ids, sample_ids, observ_metadata,
 #                sample_metadata, table_id='Example Table')
 
-class TestDiseaseSingle(unittest.TestCase):
-    def setUp(self):
-        #self.table = biom.load_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/Dan2020ASD.biom'))      
-        self.table = biom.load_table(get_data_path('table36new.biom'))
-#        self.table = table36new.biom
-        #self.metadata = pd.read_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/sample_metadata_JM_new.txt'),index_col=0)
-        self.metadata = pd.read_table(get_data_path('sample_metadata_6.txt'),
-                                      index_col=0)
-
 #class TestDiseaseSingle(unittest.TestCase):
 #    def setUp(self):
-#        np.random.seed(0)
-#        self.table, self.metadata, self.diff = _case_control_negative_binomial_sim(
-#            n=40, d=4, depth=100)
-#        self.diff = clr(alr_inv(self.diff))
-#        observation_ids = list(self.table.columns)
-#        sample_ids = list(self.table.index)
- #       count = self.table.values.T
-#        self.table = Table(count,observation_ids, sample_ids)
+#        self.table = biom.load_table(get_data_path('table36new.biom'))
+#        self.table = table36new.biom
+#        self.metadata = pd.read_table(get_data_path('sample_metadata_6.txt'),
+#                                      index_col=0)
+
+class TestDiseaseSingle(unittest.TestCase):
+    def setUp(self):
+        np.random.seed(0)
+        self.table, self.metadata, self.diff = _case_control_negative_binomial_sim(
+            n=40, d=4, depth=100)
+        self.diff = clr(alr_inv(self.diff))
+        observation_ids = list(self.table.columns)
+        sample_ids = list(self.table.index)
+        count = self.table.values.T
+        self.table = Table(count,observation_ids, sample_ids)
         #matchmaker control and disease
-        #self.metadata = _matchmaker(self.metadata,cc_bool,True)
+        self.metadata = _matchmaker(self.metadata,cc_bool,True)
     def test_stan_run(self):
         models = ModelIterator(self.table, DiseaseSingle, metadata=self.metadata,
                                match_ids_column='match_ids_column',
