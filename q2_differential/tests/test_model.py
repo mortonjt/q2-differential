@@ -59,12 +59,12 @@ from birdman.model_util import concatenate_inferences
 
 class TestDiseaseSingle(unittest.TestCase):
     def setUp(self):
-        #self.table = biom.load_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/Dan2020ASD.biom'))      
-        self.table = biom.load_table(get_data_path('table36new.biom'))
+        self.table = biom.load_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/Dan2020ASD.biom'))      
+        #self.table = biom.load_table(get_data_path('table36new.biom'))
 #        self.table = table36new.biom
-        #self.metadata = pd.read_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/sample_metadata_JM_new.txt'),index_col=0)
-        self.metadata = pd.read_table(get_data_path('sample_metadata_6.txt'),
-                                      index_col=0)
+        self.metadata = pd.read_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/sample_metadata_JM_new.txt'),index_col=0)
+        #self.metadata = pd.read_table(get_data_path('sample_metadata_6.txt'),
+        #                              index_col=0)
 
 #class TestDiseaseSingle(unittest.TestCase):
 #    def setUp(self):
@@ -89,11 +89,11 @@ class TestDiseaseSingle(unittest.TestCase):
             m.fit_model()
             return m.to_inference_object()
 
-#        samples = []
-#        for m in models:
-#            m = _single_func
-#            samples.append(m)
-#        coords = {'feature' : self.table.ids(axis='observation')}
+        samples = []
+        for m in models:
+            m = _single_func
+            samples.append(m)
+        coords = {'feature' : self.table.ids(axis='observation')}
 #        samples = concatenate_inferences(samples, coords, 'feature')
 #        samples.to_netcdf('test2.nc')
 
