@@ -25,7 +25,13 @@ if __name__ == '__main__':
                           '(i.e. treatment vs control groups).'),
         required=True)
     parser.add_argument(
-        '--control-group', help='The name of the control group.', required=True)
+        '--disease-column', help='The name of the disease group.', required=True)    
+    parser.add_argument(
+        '--batch-column', help='The name of the batch column.', required=True)
+    parser.add_argument(
+        '--match-ids', help='The name of the match ids.', required=True)
+    parser.add_argument(
+        '--reference', help='The name of the control group.', required=True)
     parser.add_argument(
         '--monte-carlo-samples', help='Number of monte carlo samples.',
         type=int, required=False, default=1000)
@@ -44,8 +50,9 @@ if __name__ == '__main__':
     metadata = pd.read_table(args.metadata_file, index_col=0)
     # initialize just to compile model
     DiseaseSingle(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
-                  category_column='Status',batch_column='batch_column',reference='Healthy',
-                  match_ids_column='match_ids_column',).compile_model()
+                  category_column=args.disease_column,batch_column=args.batch_column,reference=args.reference,
+                  match_ids_column=args.match_ids_column,).compile_model()
+    # TODO fix below
     models = ModelIterator(table, DiseaseSingle, metadata=metadata,
                            category_column='Status',match_ids_column='match_ids_column',
                            batch_column='batch_column',reference='Healthy',
@@ -66,14 +73,4 @@ if __name__ == '__main__':
     coords = {'feature' : table.ids(axis='observation')}
     samples = concatenate_inferences(samples, coords, 'feature')
     samples.to_netcdf(args.output_inference)
-    #dat = {
-    #    "F":table.shape[0],#number of features
-    #    "N":table.shape[1],#number of samples
-    #}
-    #obs = az.from_dict(
-    #    observed_data={"observed": dat["y"]},
-    #    coords={"tbl_sample": table.ids(axis="sample")},
-    #    dims={"observed": ["tbl_sample","feature"]}
-    #)
-    #inference = az.concat(samples, obs)
-    #inference.to_netcdf(args.output_inference)
+
