@@ -100,7 +100,7 @@ class DiseaseSingle(SingleFeatureModel):
         disease = disease_encoder.classes_[1:]  # careful here
         #print("#3")
         #print(disease)
-        print(disease_ids)
+        #print(disease_ids)
         #disease = disease_encoder.classes_
          # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
@@ -161,9 +161,10 @@ class DiseaseSingle(SingleFeatureModel):
                 "y":["tbl_sample"]
             },
             coords={
-                "groups": [reference, list(disease)],
-                "features": [f'log_fold_change'],
-                "tbl_samples": self.sample_names
+                "disease_ids": list(disease),
+                "disease_1p": [reference, list(disease)],
+                "feature": [f'log_fold_change'],
+                "tbl_sample": self.sample_names
             },
             include_observed_data=True,
             
