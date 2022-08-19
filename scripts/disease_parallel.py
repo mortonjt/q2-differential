@@ -22,8 +22,7 @@ if __name__ == '__main__':
         '--metadata-file', help='Sample metadata file.', required=True)
     parser.add_argument(
         '--groups', help=('Column specifying groups '
-                          '(i.e. treatment vs control groups).'),
-        required=True)
+                          '(i.e. treatment vs control groups).'),required=True)
     parser.add_argument(
         '--disease-column', help='The name of the disease group.', required=True)    
     parser.add_argument(
@@ -52,10 +51,10 @@ if __name__ == '__main__':
     DiseaseSingle(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
                   category_column=args.disease_column,batch_column=args.batch_column,reference=args.reference,
                   match_ids_column=args.match_ids_column,).compile_model()
-    # TODO fix below
+    # question: why '-' become '_' here? Groups should be 0, 1, 2...?
     models = ModelIterator(table, DiseaseSingle, metadata=metadata,
-                           category_column='Status',match_ids_column='match_ids_column',
-                           batch_column='batch_column',reference='Healthy',
+                           category_column=args.disease_column,match_ids_column=args.match_ids_column,
+                           batch_column=args.batch_column,reference=args.reference,
                            chains=args.chains,
                            num_iter=args.monte_carlo_samples,
                            num_warmup=1000)
