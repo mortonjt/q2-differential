@@ -51,7 +51,7 @@ if __name__ == '__main__':
     DiseaseSingle(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
                   category_column=args.disease_column,batch_column=args.batch_column,reference=args.reference,
                   match_ids_column=args.match_ids_column,).compile_model()
-    # question: why '-' become '_' here? Groups should be 0, 1, 2...?
+    # Groups should be 0, 1, 2...?
     models = ModelIterator(table, DiseaseSingle, metadata=metadata,
                            category_column=args.disease_column,match_ids_column=args.match_ids_column,
                            batch_column=args.batch_column,reference=args.reference,

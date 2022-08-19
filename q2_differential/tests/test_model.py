@@ -1,4 +1,5 @@
 import unittest
+import argparse
 import biom
 import pandas as pd
 import numpy as np
@@ -14,14 +15,27 @@ from biom.table import Table
 from multiprocessing import Pool
 from birdman.model_util import concatenate_inferences
 # TODO move over to pytest
+
+
+#parser = argparse.ArgumentParser()                                          
+#parser.add_argument(                                                        
+#     '--biom-table', help='Biom table of counts.', required=True)            
+#parser.add_argument(                                                        
+#     '--metadata-file', help='Sample metadata file.', required=True)         
+#args = parser.parse_args()                                                  
+#print(args.biom_table)                                                      
+#table = biom.load_table(args.biom_table)                                    
+#metadata = pd.read_table(args.metadata_file, index_col=0)
+
 class TestDiseaseSingle(unittest.TestCase):
     def setUp(self):
+        #self.table = table
+        #self.metadata = metadata
         self.table = biom.load_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/tenMicrobes.biom'))
         # TODO change to relative paths
-        #self.table = biom.load_table('data/Dan2020ASD.biom') 
         self.metadata = pd.read_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/metadata_simple_fake.txt'),       
                               index_col=0)
-
+        #unittest does not work with argparse
     def test_stan_run(self):
         models = ModelIterator(self.table, DiseaseSingle, metadata=self.metadata,
                                match_ids_column='match_ids_column',
@@ -42,4 +56,13 @@ class TestDiseaseSingle(unittest.TestCase):
 #        samples.to_netcdf('test2.nc')
 
 if __name__ == '__main__':
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument(
+    #     '--biom-table', help='Biom table of counts.', required=True)
+    # parser.add_argument(
+    #     '--metadata-file', help='Sample metadata file.', required=True)
+    # args = parser.parse_args()
+    # print(args.biom_table)
+    # table = biom.load_table(args.biom_table)
+    # metadata = pd.read_table(args.metadata_file, index_col=0)
     unittest.main()
