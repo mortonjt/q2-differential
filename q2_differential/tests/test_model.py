@@ -14,6 +14,7 @@ from skbio.stats.composition import alr_inv, clr
 from biom.table import Table
 from multiprocessing import Pool
 from birdman.model_util import concatenate_inferences
+import pytest
 # TODO move over to pytest
 
 
@@ -35,7 +36,7 @@ class TestDiseaseSingle(unittest.TestCase):
         # TODO change to relative paths
         self.metadata = pd.read_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/metadata_simple_fake.txt'),       
                               index_col=0)
-        #unittest does not work with argparse
+#unittest does not work with argparse
     def test_stan_run(self):
         models = ModelIterator(self.table, DiseaseSingle, metadata=self.metadata,
                                match_ids_column='match_ids_column',

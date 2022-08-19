@@ -20,7 +20,7 @@ parser.add_argument(
 parser.add_argument(                                                        
      '--metadata-file', help='Sample metadata file.', required=True)         
 args = parser.parse_args()                                                  
-print(args.biom_table)                                                      
+#print(args.biom_table)                                                      
 table = biom.load_table(args.biom_table)                                    
 metadata = pd.read_table(args.metadata_file, index_col=0)
 
@@ -42,4 +42,6 @@ for m in models:
     inf = _single_func(m)                                               
     samples.append(inf)                                                 
 coords = {'feature' : table.ids(axis='observation')}               
-samples = concatenate_inferences(samples, coords, 'feature')                                                                             
+samples = concatenate_inferences(samples, coords, 'feature')
+#def test_answer():
+#    assert                                                                             
