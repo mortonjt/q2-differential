@@ -1,0 +1,457 @@
+INFO:cmdstanpy:compiling stan program, exe file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiler options: stanc_options={}, cpp_options={}
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+Namespace(biom_table='/mnt/home/djin/ceph/ASD/Evans2022/vsearch/exported-feature-table/feature-table.biom', chains=4, control_group='ch16_control', groups='Genotype', metadata_file='/mnt/home/djin/ceph/ASD/Evans2022/vsearch/exported-feature-table/Metadata_group1_matched.txt', monte_carlo_samples=1000, output_inference='/mnt/home/djin/ceph/ASD/Evans2022/vsearch/exported-feature-table/test.nc', processes=128)
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:compiled model file: /mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:finish chain 2
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:finish chain 3
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 2
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 3
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:start chain 3
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:finish chain 2
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:finish chain 2
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 1
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 1
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 4
+ERROR:cmdstanpy:Chain 4 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 4
+ERROR:cmdstanpy:Chain 4 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:finish chain 2
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:finish chain 3
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 2
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 2
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 3
+INFO:cmdstanpy:start chain 3
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:finish chain 3
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:start chain 4
+INFO:cmdstanpy:finish chain 2
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 3
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 4
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 4 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 2
+INFO:cmdstanpy:finish chain 4
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 4 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 3
+INFO:cmdstanpy:finish chain 2
+INFO:cmdstanpy:finish chain 2
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 3
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 2 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 3
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:finish chain 4
+ERROR:cmdstanpy:Chain 4 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 4
+ERROR:cmdstanpy:Chain 4 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 3
+ERROR:cmdstanpy:Chain 1 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+ERROR:cmdstanpy:Chain 3 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+INFO:cmdstanpy:finish chain 4
+ERROR:cmdstanpy:Chain 4 processing error, non-zero return code 1
+ error message:
+	Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "deseq2_parallel.py", line 56, in _single_func
+    m.fit_model()
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/site-packages/birdman/model_base.py", line 157, in fit_model
+    _fit = self.sm.sample(
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/site-packages/cmdstanpy/model.py", line 885, in sample
+    raise RuntimeError(msg)
+RuntimeError: Error during sampling:
+chain_id 1:
+Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+
+chain_id 2:
+Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+
+chain_id 3:
+Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+
+chain_id 4:
+Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+Command and output files:
+RunSet: chains=4
+ cmd:
+	['/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single', 'id=1', 'random', 'seed=42', 'data', 'file=/tmp/tmpyk015ew1/5rvyds52.json', 'output', 'file=/tmp/tmpyk015ew1/deseq2_single-202208231612-1-hmo2lvl6.csv', 'method=sample', 'num_samples=1000', 'num_warmup=100', 'algorithm=hmc', 'adapt', 'engaged=1']
+ retcodes=[1, 1, 1, 1]
+ csv_files:
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-1-hmo2lvl6.csv
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-2-qquafzc7.csv
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-3-7h7em9s3.csv
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-4-l08gb9ee.csv
+ console_msgs:
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-1-hmo2lvl6-stdout.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-2-qquafzc7-stdout.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-3-7h7em9s3-stdout.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-4-l08gb9ee-stdout.txt
+ error_msgs:
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-1-hmo2lvl6-stderr.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-2-qquafzc7-stderr.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-3-7h7em9s3-stderr.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-4-l08gb9ee-stderr.txt
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "deseq2_parallel.py", line 61, in <module>
+    for inf in p.imap(_single_func, models, chunksize=50):
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/multiprocessing/pool.py", line 420, in <genexpr>
+    return (item for chunk in result for item in chunk)
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/multiprocessing/pool.py", line 868, in next
+    raise value
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "deseq2_parallel.py", line 56, in _single_func
+    m.fit_model()
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/site-packages/birdman/model_base.py", line 157, in fit_model
+    _fit = self.sm.sample(
+  File "/mnt/home/djin/miniconda3/envs/birdman3.8/lib/python3.8/site-packages/cmdstanpy/model.py", line 885, in sample
+    raise RuntimeError(msg)
+RuntimeError: Error during sampling:
+chain_id 1:
+Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+
+chain_id 2:
+Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+
+chain_id 3:
+Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+
+chain_id 4:
+Exception: mismatch in dimension declared and found in context; processing stage=data initialization; variable name=M; position=0; dims declared=(95); dims found=(36) (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single.stan', line 5, column 2 to column 11)
+
+Command and output files:
+RunSet: chains=4
+ cmd:
+	['/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/deseq2_single', 'id=1', 'random', 'seed=42', 'data', 'file=/tmp/tmpyk015ew1/5rvyds52.json', 'output', 'file=/tmp/tmpyk015ew1/deseq2_single-202208231612-1-hmo2lvl6.csv', 'method=sample', 'num_samples=1000', 'num_warmup=100', 'algorithm=hmc', 'adapt', 'engaged=1']
+ retcodes=[1, 1, 1, 1]
+ csv_files:
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-1-hmo2lvl6.csv
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-2-qquafzc7.csv
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-3-7h7em9s3.csv
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-4-l08gb9ee.csv
+ console_msgs:
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-1-hmo2lvl6-stdout.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-2-qquafzc7-stdout.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-3-7h7em9s3-stdout.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-4-l08gb9ee-stdout.txt
+ error_msgs:
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-1-hmo2lvl6-stderr.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-2-qquafzc7-stderr.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-3-7h7em9s3-stderr.txt
+	/tmp/tmpyk015ew1/deseq2_single-202208231612-4-l08gb9ee-stderr.txt
+deleting tmpfiles dir: /tmp/tmpyk015ew1
+done

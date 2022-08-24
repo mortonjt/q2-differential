@@ -44,11 +44,11 @@ if __name__ == '__main__':
     metadata = pd.read_table(args.metadata_file, index_col=0)
     # initialize just to compile model
     SingleDESeq2(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
-                 category_column='Status').compile_model()
+                 category_column=args.groups).compile_model()
     models = ModelIterator(table, SingleDESeq2, metadata=metadata,
-                           category_column='Status', chains=args.chains,
+                           category_column=args.groups, chains=args.chains,
                            num_iter=args.monte_carlo_samples,
-                           num_warmup=1000)
+                           num_warmup=100)
 
     def _single_func(x):
         fid, m = x

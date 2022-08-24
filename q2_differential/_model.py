@@ -82,14 +82,14 @@ class DiseaseSingle(SingleFeatureModel):
         #cats = cats.replace("Healthy", "AAHealthy") 
         disease_encoder = LabelEncoder()
         disease_encoder.fit(cats.values)
-        disease_ids = disease_encoder.transform(cats)
+        raw_disease_ids = disease_encoder.transform(cats)
         #2 print
         #print("#2")
         #print(disease_ids)
         # Swap with reference
         reference_cat = disease_encoder.transform([reference])
-        first_cat = disease_encoder.transform([cats[0]])
-        disease_ids = _swap(disease_ids, first_cat, reference_cat)
+        first_cat = disease_encoder.transform([sorted(cats)[0]])
+        disease_ids = _swap(raw_disease_ids, first_cat, reference_cat)
         classes_ = disease_encoder.classes_.copy()
         disease_encoder.classes_ = _swap(classes_, classes_[0], 
                                          classes_[classes_ == reference][0])

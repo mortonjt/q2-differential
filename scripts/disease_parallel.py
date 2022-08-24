@@ -33,7 +33,7 @@ if __name__ == '__main__':
         '--reference', help='The name of the control group.', required=True)
     parser.add_argument(
         '--monte-carlo-samples', help='Number of monte carlo samples.',
-        type=int, required=False, default=1000)
+        type=int, required=False, default=100)
     parser.add_argument(
         '--chains', help='Number of MCMC chains.', type=int,
         required=False, default=4)
