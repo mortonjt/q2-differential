@@ -50,10 +50,10 @@ if __name__ == '__main__':
     # initialize just to compile model
     DiseaseSingle(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
                   category_column=args.disease_column,batch_column=args.batch_column,reference=args.reference,
-                  match_ids_column=args.match_ids_column,).compile_model()
+                  match_ids_column=args.match_ids).compile_model()
     # Groups should be 0, 1, 2...?
     models = ModelIterator(table, DiseaseSingle, metadata=metadata,
-                           category_column=args.disease_column,match_ids_column=args.match_ids_column,
+                           category_column=args.disease_column,match_ids_column=args.match_ids,
                            batch_column=args.batch_column,reference=args.reference,
                            chains=args.chains,
                            num_iter=args.monte_carlo_samples,
