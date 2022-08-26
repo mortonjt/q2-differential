@@ -17,12 +17,12 @@ using namespace stan::math;
 
 
 stan::math::profile_map profiles__;
-static constexpr std::array<const char*, 64> locations_array__ = 
+static constexpr std::array<const char*, 65> locations_array__ = 
 {" (found before start of program)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 20, column 2 to column 15)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 21, column 2 to column 10)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 22, column 2 to column 10)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 24, column 2 to column 34)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 24, column 2 to column 32)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 25, column 2 to column 19)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 26, column 2 to column 30)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 27, column 2 to column 52)",
@@ -32,27 +32,28 @@ static constexpr std::array<const char*, 64> locations_array__ =
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 35, column 2 to column 16)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 36, column 2 to column 18)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 39, column 4 to column 19)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 42, column 8 to column 37)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 40, column 4 to line 42, column 37)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 43, column 4 to column 75)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 44, column 4 to column 97)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 38, column 17 to line 46, column 3)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 38, column 2 to line 46, column 3)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 67, column 2 to column 22)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 42, column 8 to column 39)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 40, column 27 to line 43, column 5)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 40, column 4 to line 43, column 5)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 44, column 4 to column 75)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 45, column 4 to column 93)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 38, column 17 to line 47, column 3)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 38, column 2 to line 47, column 3)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 68, column 2 to column 22)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 70, column 4 to column 58)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 71, column 4 to column 66)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 69, column 16 to line 72, column 3)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 69, column 2 to line 72, column 3)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 51, column 2 to column 20)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 52, column 2 to column 49)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 53, column 2 to column 26)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 54, column 2 to column 48)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 56, column 2 to column 31)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 58, column 2 to column 38)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 59, column 2 to column 46)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 69, column 2 to column 22)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 71, column 4 to column 58)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 72, column 4 to column 66)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 70, column 16 to line 73, column 3)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 70, column 2 to line 73, column 3)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 52, column 2 to column 20)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 53, column 2 to column 49)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 54, column 2 to column 26)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 55, column 2 to column 48)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 57, column 2 to column 31)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 59, column 2 to column 38)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 60, column 2 to column 46)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 63, column 2 to column 35)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 61, column 2 to column 46)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 64, column 2 to column 35)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 2, column 2 to column 17)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 3, column 2 to column 17)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 4, column 2 to column 17)",
@@ -73,15 +74,15 @@ static constexpr std::array<const char*, 64> locations_array__ =
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 15, column 2 to column 21)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 16, column 2 to column 19)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 20, column 12 to column 13)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 24, column 29 to column 32)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 24, column 29 to column 30)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 25, column 16 to column 17)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 26, column 27 to column 28)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 29, column 54 to column 55)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 34, column 9 to column 10)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 35, column 9 to column 10)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 36, column 9 to column 10)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 67, column 9 to column 10)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 68, column 9 to column 10)"};
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 68, column 9 to column 10)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 69, column 9 to column 10)"};
 
 
 
@@ -101,8 +102,7 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
   double disp_scale;
   double control_loc;
   double control_scale;
-  double batch_scale;
-  int disease_disp_1dim__; 
+  double batch_scale; 
   
  
  public:
@@ -132,154 +132,148 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
       pos__ = std::numeric_limits<int>::min();
       
       pos__ = 1;
-      current_statement__ = 35;
+      current_statement__ = 36;
       context__.validate_dims("data initialization","C","int",
            std::vector<size_t>{});
       C = std::numeric_limits<int>::min();
       
-      current_statement__ = 35;
-      C = context__.vals_i("C")[(1 - 1)];
-      current_statement__ = 35;
-      check_greater_or_equal(function__, "C", C, 0);
       current_statement__ = 36;
+      C = context__.vals_i("C")[(1 - 1)];
+      current_statement__ = 36;
+      check_greater_or_equal(function__, "C", C, 0);
+      current_statement__ = 37;
       context__.validate_dims("data initialization","N","int",
            std::vector<size_t>{});
       N = std::numeric_limits<int>::min();
       
-      current_statement__ = 36;
-      N = context__.vals_i("N")[(1 - 1)];
-      current_statement__ = 36;
-      check_greater_or_equal(function__, "N", N, 0);
       current_statement__ = 37;
+      N = context__.vals_i("N")[(1 - 1)];
+      current_statement__ = 37;
+      check_greater_or_equal(function__, "N", N, 0);
+      current_statement__ = 38;
       context__.validate_dims("data initialization","B","int",
            std::vector<size_t>{});
       B = std::numeric_limits<int>::min();
       
-      current_statement__ = 37;
-      B = context__.vals_i("B")[(1 - 1)];
-      current_statement__ = 37;
-      check_greater_or_equal(function__, "B", B, 0);
       current_statement__ = 38;
+      B = context__.vals_i("B")[(1 - 1)];
+      current_statement__ = 38;
+      check_greater_or_equal(function__, "B", B, 0);
+      current_statement__ = 39;
       context__.validate_dims("data initialization","D","int",
            std::vector<size_t>{});
       D = std::numeric_limits<int>::min();
       
-      current_statement__ = 38;
-      D = context__.vals_i("D")[(1 - 1)];
-      current_statement__ = 38;
-      check_greater_or_equal(function__, "D", D, 0);
       current_statement__ = 39;
-      validate_non_negative_index("slog", "N", N);
+      D = context__.vals_i("D")[(1 - 1)];
+      current_statement__ = 39;
+      check_greater_or_equal(function__, "D", D, 0);
       current_statement__ = 40;
+      validate_non_negative_index("slog", "N", N);
+      current_statement__ = 41;
       context__.validate_dims("data initialization","slog","double",
            std::vector<size_t>{static_cast<size_t>(N)});
       slog = std::vector<double>(N, std::numeric_limits<double>::quiet_NaN());
       
-      current_statement__ = 40;
-      slog = context__.vals_r("slog");
       current_statement__ = 41;
-      validate_non_negative_index("y", "N", N);
+      slog = context__.vals_r("slog");
       current_statement__ = 42;
+      validate_non_negative_index("y", "N", N);
+      current_statement__ = 43;
       context__.validate_dims("data initialization","y","int",
            std::vector<size_t>{static_cast<size_t>(N)});
       y = std::vector<int>(N, std::numeric_limits<int>::min());
       
-      current_statement__ = 42;
-      y = context__.vals_i("y");
       current_statement__ = 43;
-      validate_non_negative_index("cc_ids", "N", N);
+      y = context__.vals_i("y");
       current_statement__ = 44;
+      validate_non_negative_index("cc_ids", "N", N);
+      current_statement__ = 45;
       context__.validate_dims("data initialization","cc_ids","int",
            std::vector<size_t>{static_cast<size_t>(N)});
       cc_ids = std::vector<int>(N, std::numeric_limits<int>::min());
       
-      current_statement__ = 44;
-      cc_ids = context__.vals_i("cc_ids");
       current_statement__ = 45;
-      validate_non_negative_index("batch_ids", "N", N);
+      cc_ids = context__.vals_i("cc_ids");
       current_statement__ = 46;
+      validate_non_negative_index("batch_ids", "N", N);
+      current_statement__ = 47;
       context__.validate_dims("data initialization","batch_ids","int",
            std::vector<size_t>{static_cast<size_t>(N)});
       batch_ids = std::vector<int>(N, std::numeric_limits<int>::min());
       
-      current_statement__ = 46;
-      batch_ids = context__.vals_i("batch_ids");
       current_statement__ = 47;
-      validate_non_negative_index("disease_ids", "N", N);
+      batch_ids = context__.vals_i("batch_ids");
       current_statement__ = 48;
+      validate_non_negative_index("disease_ids", "N", N);
+      current_statement__ = 49;
       context__.validate_dims("data initialization","disease_ids","int",
            std::vector<size_t>{static_cast<size_t>(N)});
       disease_ids = std::vector<int>(N, std::numeric_limits<int>::min());
       
-      current_statement__ = 48;
-      disease_ids = context__.vals_i("disease_ids");
       current_statement__ = 49;
+      disease_ids = context__.vals_i("disease_ids");
+      current_statement__ = 50;
       context__.validate_dims("data initialization","diff_scale","double",
            std::vector<size_t>{});
       diff_scale = std::numeric_limits<double>::quiet_NaN();
       
-      current_statement__ = 49;
-      diff_scale = context__.vals_r("diff_scale")[(1 - 1)];
       current_statement__ = 50;
+      diff_scale = context__.vals_r("diff_scale")[(1 - 1)];
+      current_statement__ = 51;
       context__.validate_dims("data initialization","disp_scale","double",
            std::vector<size_t>{});
       disp_scale = std::numeric_limits<double>::quiet_NaN();
       
-      current_statement__ = 50;
-      disp_scale = context__.vals_r("disp_scale")[(1 - 1)];
       current_statement__ = 51;
+      disp_scale = context__.vals_r("disp_scale")[(1 - 1)];
+      current_statement__ = 52;
       context__.validate_dims("data initialization","control_loc","double",
            std::vector<size_t>{});
       control_loc = std::numeric_limits<double>::quiet_NaN();
       
-      current_statement__ = 51;
-      control_loc = context__.vals_r("control_loc")[(1 - 1)];
       current_statement__ = 52;
+      control_loc = context__.vals_r("control_loc")[(1 - 1)];
+      current_statement__ = 53;
       context__.validate_dims("data initialization","control_scale","double",
            std::vector<size_t>{});
       control_scale = std::numeric_limits<double>::quiet_NaN();
       
-      current_statement__ = 52;
-      control_scale = context__.vals_r("control_scale")[(1 - 1)];
       current_statement__ = 53;
+      control_scale = context__.vals_r("control_scale")[(1 - 1)];
+      current_statement__ = 54;
       context__.validate_dims("data initialization","batch_scale","double",
            std::vector<size_t>{});
       batch_scale = std::numeric_limits<double>::quiet_NaN();
       
-      current_statement__ = 53;
-      batch_scale = context__.vals_r("batch_scale")[(1 - 1)];
       current_statement__ = 54;
+      batch_scale = context__.vals_r("batch_scale")[(1 - 1)];
+      current_statement__ = 55;
       validate_non_negative_index("diff", "D", D);
-      current_statement__ = 55;
-      disease_disp_1dim__ = std::numeric_limits<int>::min();
-      
-      current_statement__ = 55;
-      disease_disp_1dim__ = (D + 1);
-      current_statement__ = 55;
-      validate_non_negative_index("disease_disp", "D + 1",
-                                  disease_disp_1dim__);
       current_statement__ = 56;
-      validate_non_negative_index("batch_mu", "B", B);
+      validate_non_negative_index("disease_disp", "D", D);
       current_statement__ = 57;
-      validate_non_negative_index("batch_disp", "B", B);
+      validate_non_negative_index("batch_mu", "B", B);
       current_statement__ = 58;
-      validate_non_negative_index("control", "C", C);
+      validate_non_negative_index("batch_disp", "B", B);
       current_statement__ = 59;
-      validate_non_negative_index("lam", "N", N);
+      validate_non_negative_index("control", "C", C);
       current_statement__ = 60;
-      validate_non_negative_index("phi", "N", N);
+      validate_non_negative_index("lam", "N", N);
       current_statement__ = 61;
-      validate_non_negative_index("alpha", "N", N);
+      validate_non_negative_index("phi", "N", N);
       current_statement__ = 62;
-      validate_non_negative_index("y_predict", "N", N);
+      validate_non_negative_index("alpha", "N", N);
       current_statement__ = 63;
+      validate_non_negative_index("y_predict", "N", N);
+      current_statement__ = 64;
       validate_non_negative_index("log_lhood", "N", N);
     } catch (const std::exception& e) {
       stan::lang::rethrow_located(e, locations_array__[current_statement__]);
       // Next line prevents compiler griping about no return
       throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***"); 
     }
-    num_params_r__ = D + 1 + 1 + disease_disp_1dim__ + B + B + 1 + 1 + C;
+    num_params_r__ = D + 1 + 1 + D + B + B + 1 + 1 + C;
     
   }
   
@@ -317,12 +311,11 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
       current_statement__ = 3;
       a1 = in__.template read<local_scalar_t__>();
       std::vector<local_scalar_t__> disease_disp;
-      disease_disp = std::vector<local_scalar_t__>(disease_disp_1dim__, DUMMY_VAR__);
-      
+      disease_disp = std::vector<local_scalar_t__>(D, DUMMY_VAR__);
       
       current_statement__ = 4;
       disease_disp = in__.template read_constrain_lb<std::vector<local_scalar_t__>, jacobian__>(
-                       0, lp__, disease_disp_1dim__);
+                       0, lp__, D);
       std::vector<local_scalar_t__> batch_mu;
       batch_mu = std::vector<local_scalar_t__>(B, DUMMY_VAR__);
       
@@ -364,21 +357,21 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
       alpha = Eigen::Matrix<local_scalar_t__, -1, 1>(N);
       stan::math::fill(alpha, DUMMY_VAR__);
       
-      current_statement__ = 19;
+      current_statement__ = 20;
       for (int n = 1; n <= N; ++n) {
         local_scalar_t__ delta;
         delta = DUMMY_VAR__;
         
         current_statement__ = 13;
         delta = 0;
-        current_statement__ = 15;
-        if (logical_gt(rvalue(disease_ids, "disease_ids", index_uni(n)), 0)) {
+        current_statement__ = 16;
+        if (logical_gt(rvalue(disease_ids, "disease_ids", index_uni(n)), 1)) {
           current_statement__ = 14;
           delta = rvalue(diff, "diff",
-                    index_uni(rvalue(disease_ids, "disease_ids",
-                                index_uni(n))));
+                    index_uni((rvalue(disease_ids, "disease_ids",
+                                 index_uni(n)) - 1)));
         } 
-        current_statement__ = 16;
+        current_statement__ = 17;
         assign(lam,
           (((rvalue(slog, "slog", index_uni(n)) +
               rvalue(control, "control",
@@ -387,41 +380,41 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
             rvalue(batch_mu, "batch_mu",
               index_uni(rvalue(batch_ids, "batch_ids", index_uni(n))))),
           "assigning variable lam", index_uni(n));
-        current_statement__ = 17;
+        current_statement__ = 18;
         assign(phi,
           inv(
             ((stan::math::exp((a1 - rvalue(lam, "lam", index_uni(n)))) +
                rvalue(disease_disp, "disease_disp",
-                 index_uni((rvalue(disease_ids, "disease_ids", index_uni(n))
-                             + 1)))) +
+                 index_uni(rvalue(disease_ids, "disease_ids", index_uni(n)))))
+              +
               rvalue(batch_disp, "batch_disp",
                 index_uni(rvalue(batch_ids, "batch_ids", index_uni(n)))))),
           "assigning variable phi", index_uni(n));
       }
       {
-        current_statement__ = 26;
-        lp_accum__.add(normal_lpdf<propto__>(a1, 1, 1));
         current_statement__ = 27;
+        lp_accum__.add(normal_lpdf<propto__>(a1, 1, 1));
+        current_statement__ = 28;
         lp_accum__.add(
           lognormal_lpdf<propto__>(disease_disp, stan::math::log(0.1),
             disp_scale));
-        current_statement__ = 28;
-        lp_accum__.add(normal_lpdf<propto__>(batch_mu, 0, 3));
         current_statement__ = 29;
+        lp_accum__.add(normal_lpdf<propto__>(batch_mu, 0, 3));
+        current_statement__ = 30;
         lp_accum__.add(
           lognormal_lpdf<propto__>(batch_disp, stan::math::log(0.1),
             batch_scale));
-        current_statement__ = 30;
-        lp_accum__.add(normal_lpdf<propto__>(diff, 0, diff_scale));
         current_statement__ = 31;
-        lp_accum__.add(normal_lpdf<propto__>(control_mu, control_loc, 3));
+        lp_accum__.add(normal_lpdf<propto__>(diff, 0, diff_scale));
         current_statement__ = 32;
-        lp_accum__.add(
-          lognormal_lpdf<propto__>(control_sigma, 0, control_scale));
+        lp_accum__.add(normal_lpdf<propto__>(control_mu, control_loc, 3));
         current_statement__ = 33;
         lp_accum__.add(
-          normal_lpdf<propto__>(control, control_mu, control_sigma));
+          lognormal_lpdf<propto__>(control_sigma, 0, control_scale));
         current_statement__ = 34;
+        lp_accum__.add(
+          normal_lpdf<propto__>(control, control_mu, control_sigma));
+        current_statement__ = 35;
         lp_accum__.add(neg_binomial_2_log_lpmf<propto__>(y, lam, phi));
       }
     } catch (const std::exception& e) {
@@ -474,12 +467,12 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
       current_statement__ = 3;
       a1 = in__.template read<local_scalar_t__>();
       std::vector<double> disease_disp;
-      disease_disp = std::vector<double>(disease_disp_1dim__, std::numeric_limits<double>::quiet_NaN());
+      disease_disp = std::vector<double>(D, std::numeric_limits<double>::quiet_NaN());
       
       
       current_statement__ = 4;
       disease_disp = in__.template read_constrain_lb<std::vector<local_scalar_t__>, jacobian__>(
-                       0, lp__, disease_disp_1dim__);
+                       0, lp__, D);
       std::vector<double> batch_mu;
       batch_mu = std::vector<double>(B, std::numeric_limits<double>::quiet_NaN());
       
@@ -528,7 +521,7 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
       }
       vars__.emplace_back(a0);
       vars__.emplace_back(a1);
-      for (int sym1__ = 1; sym1__ <= disease_disp_1dim__; ++sym1__) {
+      for (int sym1__ = 1; sym1__ <= D; ++sym1__) {
         vars__.emplace_back(disease_disp[(sym1__ - 1)]);
       }
       for (int sym1__ = 1; sym1__ <= B; ++sym1__) {
@@ -546,21 +539,21 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
             primitive_value(emit_generated_quantities__)))) {
         return ;
       } 
-      current_statement__ = 19;
+      current_statement__ = 20;
       for (int n = 1; n <= N; ++n) {
         double delta;
         delta = std::numeric_limits<double>::quiet_NaN();
         
         current_statement__ = 13;
         delta = 0;
-        current_statement__ = 15;
-        if (logical_gt(rvalue(disease_ids, "disease_ids", index_uni(n)), 0)) {
+        current_statement__ = 16;
+        if (logical_gt(rvalue(disease_ids, "disease_ids", index_uni(n)), 1)) {
           current_statement__ = 14;
           delta = rvalue(diff, "diff",
-                    index_uni(rvalue(disease_ids, "disease_ids",
-                                index_uni(n))));
+                    index_uni((rvalue(disease_ids, "disease_ids",
+                                 index_uni(n)) - 1)));
         } 
-        current_statement__ = 16;
+        current_statement__ = 17;
         assign(lam,
           (((rvalue(slog, "slog", index_uni(n)) +
               rvalue(control, "control",
@@ -569,13 +562,13 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
             rvalue(batch_mu, "batch_mu",
               index_uni(rvalue(batch_ids, "batch_ids", index_uni(n))))),
           "assigning variable lam", index_uni(n));
-        current_statement__ = 17;
+        current_statement__ = 18;
         assign(phi,
           inv(
             ((stan::math::exp((a1 - rvalue(lam, "lam", index_uni(n)))) +
                rvalue(disease_disp, "disease_disp",
-                 index_uni((rvalue(disease_ids, "disease_ids", index_uni(n))
-                             + 1)))) +
+                 index_uni(rvalue(disease_ids, "disease_ids", index_uni(n)))))
+              +
               rvalue(batch_disp, "batch_disp",
                 index_uni(rvalue(batch_ids, "batch_ids", index_uni(n)))))),
           "assigning variable phi", index_uni(n));
@@ -602,14 +595,14 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
       log_lhood = Eigen::Matrix<double, -1, 1>(N);
       stan::math::fill(log_lhood, std::numeric_limits<double>::quiet_NaN());
       
-      current_statement__ = 25;
+      current_statement__ = 26;
       for (int n = 1; n <= N; ++n) {
-        current_statement__ = 22;
+        current_statement__ = 23;
         assign(y_predict,
           neg_binomial_2_log_rng(rvalue(lam, "lam", index_uni(n)),
             rvalue(phi, "phi", index_uni(n)), base_rng__),
           "assigning variable y_predict", index_uni(n));
-        current_statement__ = 23;
+        current_statement__ = 24;
         assign(log_lhood,
           neg_binomial_2_log_lpmf<false>(rvalue(y, "y", index_uni(n)),
             rvalue(lam, "lam", index_uni(n)),
@@ -661,17 +654,17 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
       current_statement__ = 3;
       a1 = context__.vals_r("a1")[(1 - 1)];
       std::vector<double> disease_disp;
-      disease_disp = std::vector<double>(disease_disp_1dim__, std::numeric_limits<double>::quiet_NaN());
+      disease_disp = std::vector<double>(D, std::numeric_limits<double>::quiet_NaN());
       
       
       current_statement__ = 4;
       disease_disp = context__.vals_r("disease_disp");
       std::vector<double> disease_disp_free__;
-      disease_disp_free__ = std::vector<double>(disease_disp_1dim__, std::numeric_limits<double>::quiet_NaN());
+      disease_disp_free__ = std::vector<double>(D, std::numeric_limits<double>::quiet_NaN());
       
       
       current_statement__ = 4;
-      for (int sym1__ = 1; sym1__ <= disease_disp_1dim__; ++sym1__) {
+      for (int sym1__ = 1; sym1__ <= D; ++sym1__) {
         current_statement__ = 4;
         assign(disease_disp_free__,
           stan::math::lb_free(disease_disp[(sym1__ - 1)], 0),
@@ -753,7 +746,7 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
       }
       vars__.emplace_back(a0);
       vars__.emplace_back(a1);
-      for (int sym1__ = 1; sym1__ <= disease_disp_1dim__; ++sym1__) {
+      for (int sym1__ = 1; sym1__ <= D; ++sym1__) {
         vars__.emplace_back(disease_disp_free__[(sym1__ - 1)]);
       }
       for (int sym1__ = 1; sym1__ <= B; ++sym1__) {
@@ -788,7 +781,7 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
                                                                    static_cast<size_t>(D)
                                                                    },
       std::vector<size_t>{}, std::vector<size_t>{},
-      std::vector<size_t>{static_cast<size_t>(disease_disp_1dim__)},
+      std::vector<size_t>{static_cast<size_t>(D)},
       std::vector<size_t>{static_cast<size_t>(B)},
       std::vector<size_t>{static_cast<size_t>(B)}, std::vector<size_t>{
       }, std::vector<size_t>{}, std::vector<size_t>{static_cast<size_t>(C)},
@@ -813,7 +806,7 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
     }
     param_names__.emplace_back(std::string() + "a0");
     param_names__.emplace_back(std::string() + "a1");
-    for (int sym1__ = 1; sym1__ <= disease_disp_1dim__; ++sym1__) {
+    for (int sym1__ = 1; sym1__ <= D; ++sym1__) {
       {
         param_names__.emplace_back(std::string() + "disease_disp" + '.' + std::to_string(sym1__));
       } 
@@ -881,7 +874,7 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
     }
     param_names__.emplace_back(std::string() + "a0");
     param_names__.emplace_back(std::string() + "a1");
-    for (int sym1__ = 1; sym1__ <= disease_disp_1dim__; ++sym1__) {
+    for (int sym1__ = 1; sym1__ <= D; ++sym1__) {
       {
         param_names__.emplace_back(std::string() + "disease_disp" + '.' + std::to_string(sym1__));
       } 
@@ -938,13 +931,13 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
     
   inline std::string get_constrained_sizedtypes() const {
     
-    return std::string("[{\"name\":\"diff\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(D) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"a0\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"a1\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"disease_disp\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(disease_disp_1dim__) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"batch_mu\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(B) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"batch_disp\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(B) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"control_mu\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"control_sigma\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"control\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(C) + "},\"block\":\"parameters\"},{\"name\":\"lam\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"phi\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"alpha\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"y_predict\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"},{\"name\":\"log_lhood\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"}]");
+    return std::string("[{\"name\":\"diff\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(D) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"a0\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"a1\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"disease_disp\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(D) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"batch_mu\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(B) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"batch_disp\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(B) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"control_mu\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"control_sigma\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"control\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(C) + "},\"block\":\"parameters\"},{\"name\":\"lam\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"phi\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"alpha\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"y_predict\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"},{\"name\":\"log_lhood\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"}]");
     
     } // get_constrained_sizedtypes() 
     
   inline std::string get_unconstrained_sizedtypes() const {
     
-    return std::string("[{\"name\":\"diff\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(D) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"a0\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"a1\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"disease_disp\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(disease_disp_1dim__) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"batch_mu\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(B) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"batch_disp\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(B) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"control_mu\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"control_sigma\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"control\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(C) + "},\"block\":\"parameters\"},{\"name\":\"lam\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"phi\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"alpha\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"y_predict\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"},{\"name\":\"log_lhood\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"}]");
+    return std::string("[{\"name\":\"diff\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(D) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"a0\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"a1\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"disease_disp\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(D) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"batch_mu\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(B) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"batch_disp\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(B) + ",\"element_type\":{\"name\":\"real\"}},\"block\":\"parameters\"},{\"name\":\"control_mu\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"control_sigma\",\"type\":{\"name\":\"real\"},\"block\":\"parameters\"},{\"name\":\"control\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(C) + "},\"block\":\"parameters\"},{\"name\":\"lam\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"phi\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"alpha\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"transformed_parameters\"},{\"name\":\"y_predict\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"},{\"name\":\"log_lhood\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"}]");
     
     } // get_unconstrained_sizedtypes() 
     

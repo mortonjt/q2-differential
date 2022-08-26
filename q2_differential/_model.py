@@ -69,27 +69,19 @@ class DiseaseSingle(SingleFeatureModel):
                          num_warmup=num_warmup,
                          chains=chains,
                          seed=seed)
-        values = table.data(
-            id=feature_id,
-            axis="observation",
-            dense=True
-            ).astype(int)
+        metadata = metadata.loc[table.ids()]
         # pulls down the category information (i.e. health vs different diseases)
         cats = metadata[category_column]
-        #print("#1")
-        #print(cats.value_counts())
         #LableEncoder values were ranked by letters
         #cats = cats.replace("Healthy", "AAHealthy") 
         disease_encoder = LabelEncoder()
         disease_encoder.fit(cats.values)
         raw_disease_ids = disease_encoder.transform(cats)
-        #2 print
-        #print("#2")
-        #print(disease_ids)
         # Swap with reference
         reference_cat = disease_encoder.transform([reference])
         first_cat = disease_encoder.transform([sorted(cats)[0]])
         disease_ids = _swap(raw_disease_ids, first_cat, reference_cat)
+        #print(disease_ids)
         classes_ = disease_encoder.classes_.copy()
         disease_encoder.classes_ = _swap(classes_, classes_[0], 
                                          classes_[classes_ == reference][0])
@@ -98,9 +90,6 @@ class DiseaseSingle(SingleFeatureModel):
                                         disease_encoder.transform(disease_encoder.classes_))) 
 
         disease = disease_encoder.classes_[1:]  # careful here
-        #print("#3")
-        #print(disease)
-        #print(disease_ids)
         #disease = disease_encoder.classes_
          # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
@@ -134,19 +123,18 @@ class DiseaseSingle(SingleFeatureModel):
             "B" : B,
             "D" : D,
             "slog": slog, 
-            "disease_ids": disease_ids,
+            "disease_ids": disease_ids+1,
             "cc_ids": case_ids + 1,                 # matching ids
             "batch_ids" : batch_ids + 1,            # aka study ids
             "control_loc": control_loc,
             "control_scale": control_scale,
             "batch_scale":batch_scale,
             "diff_scale": diff_scale,
-            "disp_scale": disp_scale,
-            "y":values
+            "disp_scale": disp_scale
         }
         self.add_parameters(param_dict)
         self.specify_model(
-            # TODO: specify priors for all parameters
+            #specify priors for all parameters
             params=["a0", "a1", "a2", 
                     "diff", "disease_disp"],
             dims={
@@ -155,7 +143,7 @@ class DiseaseSingle(SingleFeatureModel):
                 "a2": ["feature"],
                 "diff": ["feature", "disease_ids"],
                 "disp_scale": ["feature", "disease_1p"],
-                # TODO: fill out the dimensions for the other parameters
+                #fill out the dimensions for the other parameters
                 "log_lhood": ["tbl_sample"],
                 "y_predict": ["tbl_sample"],
                 "y":["tbl_sample"]

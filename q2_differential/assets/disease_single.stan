@@ -21,7 +21,7 @@ parameters {
   real a0;                // per microbe constant dispersion
   real a1;                // per microbe linear dispersion
 
-  real<lower=0> disease_disp[D+1];   // per microbe quadratic dispersion for all diseases
+  real<lower=0> disease_disp[D];   // per microbe quadratic dispersion for all diseases
   real batch_mu[B];                  // per batch bias
   real<lower=0> batch_disp[B];       // per batch dispersion
   real<offset=control_loc, multiplier=3> control_mu;              // log control proportions (prior mean)
@@ -37,11 +37,12 @@ transformed parameters {
 
   for (n in 1:N) {
     real delta = 0;
-    if (disease_ids[n] > 0) 
+    if (disease_ids[n] > 1){ 
     // if not control
         delta = diff[disease_ids[n]];
+    }
     lam[n] = slog[n] + control[cc_ids[n]] + delta + batch_mu[batch_ids[n]];
-    phi[n] = inv(exp(a1 - lam[n]) + disease_disp[disease_ids[n] + 1] + batch_disp[batch_ids[n]]);
+    phi[n] = inv(exp(a1 - lam[n]) + disease_disp[disease_ids[n]] + batch_disp[batch_ids[n]]);
     //phi[n] = inv(disp[cc_bool[n] + 1]);
   }
 }

@@ -21,16 +21,17 @@ parser.add_argument(
      '--metadata-file', help='Sample metadata file.', required=True)         
 args = parser.parse_args()                                                  
 #print(args.biom_table)                                                      
-table = biom.load_table(args.biom_table)                                    
-metadata = pd.read_table(args.metadata_file, index_col=0)
+#table = biom.load_table(args.biom_table)                                    
+#metadata = pd.read_table(args.metadata_file, index_col=0)
 
-#table = biom.load_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/tenMicrobes.biom'))
-#metadata = pd.read_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/metadata_simple_fake.txt'),
-#                         index_col=0) 
+table = biom.load_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/tenMicrobes.biom'))
+metadata = pd.read_table(get_data_path('/mnt/home/djin/ceph/snakemake/data/Dan2020ASD_rl150/metadata_simple_fake.txt'),
+                         index_col=0) 
 models = ModelIterator(table, DiseaseSingle, metadata=metadata,
                        match_ids_column='match_ids_column',             
                        batch_column='batch_column',reference='Healthy', 
                        category_column='Status', num_iter=10, num_warmup=10)
+
 def _single_func(x):                                                    
     fid, m = x                                                          
     m.compile_model()                                                   
