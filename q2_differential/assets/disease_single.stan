@@ -2,7 +2,7 @@ data {
   int<lower=0> C;         // number of controls
   int<lower=0> N;         // number of samples
   int<lower=0> B;         // number of batches
-  int<lower=0> D;         // number of diseases
+  int<lower=0> D;         // number of diseases and healthy
   real slog[N];          // log sequencing depths of microbes
   int y[N];               // observed microbe abundances
   int cc_ids[N];          // control ids

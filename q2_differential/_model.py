@@ -89,7 +89,11 @@ class DiseaseSingle(SingleFeatureModel):
         disease_name_mapping = dict(zip(disease_encoder.classes_,
                                         disease_encoder.transform(disease_encoder.classes_))) 
 
-        disease = disease_encoder.classes_[1:]  # careful here
+        #disease = disease_encoder.classes_[1:]  # careful here
+        disease = disease_encoder.classes_
+        #print(list(disease))
+        #print(len(list(disease)))
+        #['Healthy' 'CD' 'ASD']
         #disease = disease_encoder.classes_
          # sequence depth normalization constant
         slog = _normalization_func(table, normalization)
@@ -111,9 +115,10 @@ class DiseaseSingle(SingleFeatureModel):
         N = len(metadata)
         #number of batches
         B = len(np.unique(batch_ids))
-        #number of diseases
-        D = len(np.unique(disease_ids)) - 1
-        
+        #number of diseases and healthy
+        D = len(np.unique(disease_ids))
+       # print(D)
+       #3        
         control_loc = np.log(1. / len(table.ids(axis='observation')))
         control_scale = 5
         batch_scale = 3
@@ -123,7 +128,7 @@ class DiseaseSingle(SingleFeatureModel):
             "B" : B,
             "D" : D,
             "slog": slog, 
-            "disease_ids": disease_ids+1,
+            "disease_ids": disease_ids + 1,
             "cc_ids": case_ids + 1,                 # matching ids
             "batch_ids" : batch_ids + 1,            # aka study ids
             "control_loc": control_loc,
@@ -132,6 +137,7 @@ class DiseaseSingle(SingleFeatureModel):
             "diff_scale": diff_scale,
             "disp_scale": disp_scale
         }
+        #print(disease_ids)
         self.add_parameters(param_dict)
         self.specify_model(
             #specify priors for all parameters

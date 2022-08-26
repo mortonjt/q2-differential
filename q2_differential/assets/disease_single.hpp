@@ -32,7 +32,7 @@ static constexpr std::array<const char*, 65> locations_array__ =
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 35, column 2 to column 16)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 36, column 2 to column 18)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 39, column 4 to column 19)",
- " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 42, column 8 to column 39)",
+ " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 42, column 8 to column 37)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 40, column 27 to line 43, column 5)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 40, column 4 to line 43, column 5)",
  " (in '/mnt/ceph/users/djin/git/q2-differential/q2_differential/assets/disease_single.stan', line 44, column 4 to column 75)",
@@ -368,8 +368,8 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
         if (logical_gt(rvalue(disease_ids, "disease_ids", index_uni(n)), 1)) {
           current_statement__ = 14;
           delta = rvalue(diff, "diff",
-                    index_uni((rvalue(disease_ids, "disease_ids",
-                                 index_uni(n)) - 1)));
+                    index_uni(rvalue(disease_ids, "disease_ids",
+                                index_uni(n))));
         } 
         current_statement__ = 17;
         assign(lam,
@@ -550,8 +550,8 @@ class disease_single_model final : public model_base_crtp<disease_single_model> 
         if (logical_gt(rvalue(disease_ids, "disease_ids", index_uni(n)), 1)) {
           current_statement__ = 14;
           delta = rvalue(diff, "diff",
-                    index_uni((rvalue(disease_ids, "disease_ids",
-                                 index_uni(n)) - 1)));
+                    index_uni(rvalue(disease_ids, "disease_ids",
+                                index_uni(n))));
         } 
         current_statement__ = 17;
         assign(lam,
