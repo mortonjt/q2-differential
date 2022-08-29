@@ -1,3 +1,8 @@
+*.hpp
+deseq2_simple
+deseq2_single
+disease_single
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
