@@ -20,7 +20,7 @@ class TestDiseaseSingle(unittest.TestCase):
                      '/mnt/home/djin/ceph/snakemake/data/test_Dan2020_Franzosa2019CD/Dan_Fran_CD.biom'))
         self.metadata = pd.read_table(get_data_path(
                      '/mnt/home/djin/ceph/snakemake/data/test_Dan2020_Franzosa2019CD/Metadata_ASD_CD_combined.txt'),
-                                      index_col=0)
+                     index_col=0)
 
  
     def test_stan_run(self):
