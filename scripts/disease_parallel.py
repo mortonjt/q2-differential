@@ -3,7 +3,7 @@ import biom
 import pandas as pd
 import numpy as np
 import xarray as xr
-from q2_differential._model import DiseaseSingle
+from q2_differential._model import DiseaseSingle, _single_func
 from birdman.model_util import concatenate_inferences
 from birdman import ModelIterator
 import time
@@ -24,7 +24,7 @@ if __name__ == '__main__':
         '--groups', help=('Column specifying groups '
                           '(i.e. treatment vs control groups).'),required=True)
     parser.add_argument(
-        '--disease-column', help='The name of the disease group.', required=True)    
+        '--disease-column', help='The name of the disease group.', required=True)
     parser.add_argument(
         '--batch-column', help='The name of the batch column.', required=True)
     parser.add_argument(
@@ -48,22 +48,21 @@ if __name__ == '__main__':
     table = biom.load_table(args.biom_table)
     metadata = pd.read_table(args.metadata_file, index_col=0)
     # initialize just to compile model
-    DiseaseSingle(table, metadata=metadata, feature_id=table.ids(axis='observation')[0],
-                  category_column=args.disease_column,batch_column=args.batch_column,reference=args.reference,
+    DiseaseSingle(table, metadata=metadata,
+                  feature_id=table.ids(axis='observation')[0],
+                  category_column=args.disease_column,
+                  batch_column=args.batch_column,
+                  reference=args.reference,
                   match_ids_column=args.match_ids).compile_model()
     # Groups should be 0, 1, 2...?
     models = ModelIterator(table, DiseaseSingle, metadata=metadata,
-                           category_column=args.disease_column,match_ids_column=args.match_ids,
-                           batch_column=args.batch_column,reference=args.reference,
+                           category_column=args.disease_column,
+                           match_ids_column=args.match_ids,
+                           batch_column=args.batch_column,
+                           reference=args.reference,
                            chains=args.chains,
                            num_iter=args.monte_carlo_samples,
                            num_warmup=1000)
-
-    def _single_func(x):
-        fid, m = x
-        m.compile_model()
-        m.fit_model()
-        return m.to_inference_object()
 
     samples = []
     with Pool(args.processes) as p:
@@ -72,4 +71,3 @@ if __name__ == '__main__':
     coords = {'feature' : table.ids(axis='observation')}
     samples = concatenate_inferences(samples, coords, 'feature')
     samples.to_netcdf(args.output_inference)
-

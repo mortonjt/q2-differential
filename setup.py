@@ -45,5 +45,5 @@ setup(name='q2-differential',
       package_data={
           "q2_differential": ['assets/*'],
       },
-      scripts=glob('scripts/*'),
+      scripts=glob('scripts/*.py'),
       classifiers=classifiers)
