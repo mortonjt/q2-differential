@@ -33,6 +33,7 @@ t1, m1, d1 = _case_control_negative_binomial_sim(
     n=40, d=d, depth=100, diff_scale=1, params=params, state=state)
 t2, m2, d2 = _case_control_negative_binomial_sim(
     n=40, d=d, depth=100, diff_scale=2, params=params, state=state)
+# rename diseases
 m2.loc[m2['cc_bool'] == '1', 'cc_bool'] = '2'
 m2.index = list(map(lambda x: f'{x}_2', m2.index))
 t2.index = list(map(lambda x: f'{x}_2', t2.index))
@@ -71,8 +72,8 @@ for m in models:
 
 posterior = concatenate_inferences(samples, coords, 'feature')
 
-res_diffs = posterior['posterior']['diff'].to_dataframe()
-res_diff_5 = (res_diffs
+res_diff_5 = (posterior['posterior']['diff']
+              .to_dataframe()
               .reset_index()[['feature', 'disease_ids', 'diff']]
               .groupby(['feature', 'disease_ids'])
               .agg(lambda x: np.percentile(x, 5))
@@ -80,7 +81,8 @@ res_diff_5 = (res_diffs
               .query("disease_ids != '0'")
               .set_index(['feature', 'disease_ids'])['diff']
               .sort_index())
-res_diff_95 = (res_diffs
+res_diff_95 = (posterior['posterior']['diff']
+               .to_dataframe()
                .reset_index()[['feature', 'disease_ids', 'diff']]
                .groupby(['feature', 'disease_ids'])
                .agg(lambda x: np.percentile(x, 95))
@@ -89,6 +91,7 @@ res_diff_95 = (res_diffs
                .set_index(['feature', 'disease_ids'])['diff']
                .sort_index())
 
-
+# check to see if the ground truth log-fold changes are within
+# the 95% confidence intervals
 assert all(res_diff_5 < exp_diffs)
 assert all(res_diff_95 > exp_diffs)
