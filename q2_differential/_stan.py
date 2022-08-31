@@ -25,10 +25,10 @@ def negative_binomial_rvs(mu, alpha, state=None):
 
 def _case_control_negative_binomial_sim(n=100, b=2, d=10, depth=50,
                                         disp_scale = 0.1,
-                                        batch_scale = 0.1,
+                                        batch_scale = 3,
                                         diff_scale = 1,
                                         control_loc = None,
-                                        control_scale = 0.1,
+                                        control_scale = 3,
                                         state=None, params=dict()):
     """ Simulate case-controls from Negative Binomial distribution
     Parameters
@@ -66,17 +66,18 @@ def _case_control_negative_binomial_sim(n=100, b=2, d=10, depth=50,
     # setup scaling parameters
     if control_loc is None:
         control_loc = np.log(1 / d)
-    eps = 0.1      # random effects for intercepts
+    eps = 1      # random effects for intercepts
     delta = 0.1    # size of overdispersion
     # setup priors
     a1 = state.normal(eps, eps, size=d)
     diff = params.get('diff', state.normal(0, diff_scale, size=d))
     disp = params.get('disp', state.lognormal(np.log(delta), disp_scale, size=(2, d)))
-
     batch_mu = params.get('batch_mu', state.normal(0, 1, size=(b, d)))
-    batch_disp = params.get('batch_disp', state.lognormal(np.log(delta), batch_scale, size=(b, d)))
-    control_mu = params.get('control_mu', state.normal(control_loc, 1, size=(d)))
-    control_sigma = params.get('control_sigma', state.lognormal(np.log(delta), control_scale, size=(d)))
+    batch_disp = params.get(
+        'batch_disp', state.lognormal(np.log(delta), batch_scale, size=(b, d)))
+    control_mu = params.get('control_mu', state.normal(control_loc, 3, size=(d)))
+    control_sigma = params.get(
+        'control_sigma', state.lognormal(0, control_scale, size=(d)))
     control = np.vstack([state.normal(control_mu, control_sigma) for _ in range(c)])
 
     depth = np.log(state.poisson(depth, size=n))

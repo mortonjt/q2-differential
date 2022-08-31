@@ -32,18 +32,17 @@ def _swap(vec, x, y):
 
 def relabel(x):
     encoder = LabelEncoder()
-    encoder.fit(cats.values)
-    ids = encoder.transform(cats)
+    encoder.fit(x)
+    ids = encoder.transform(x)
     return ids, encoder
 
 
 def swap_classes(ids, encoder, reference):
     reference_cat = encoder.transform([reference])
-    first_cat = encoder.transform([ids[0]])
+    first_cat = encoder.classes_[0]
     ids = _swap(ids, first_cat, reference_cat)
-    classes_ = disease_encoder.classes_.copy()
-    encoder.classes_ = _swap(classes_, classes_[0],
-                             classes_[classes_ == reference][0])
+    classes_ = encoder.classes_.copy()
+    encoder.classes_ = _swap(classes_, classes_[0], reference)
     return ids, encoder
 
 
@@ -91,11 +90,12 @@ class DiseaseSingle(SingleFeatureModel):
         metadata = metadata.loc[table.ids()]
         # pulls down the category information (i.e. health vs different diseases)
         case_ids, case_encoder = relabel(metadata[match_ids_column].values)
-        batch_ids, batch_encoder = relabel(metadata[batch_ids_column].values)
+        batch_ids, batch_encoder = relabel(metadata[batch_column].values)
         disease_ids, disease_encoder = relabel(metadata[category_column].values)
 
         # Swap with reference
-        ids, encoder = swap_classes(ids, encoder, reference)
+        # disease_ids, disease_encoder = swap_classes(
+        #     disease_ids, disease_encoder, reference)
         disease = disease_encoder.classes_
 
         # log of sequencing depth
@@ -118,6 +118,7 @@ class DiseaseSingle(SingleFeatureModel):
             "B" : B,
             "D" : D,
             "slog": slog,
+            "reference" : int(disease_encoder.transform([reference])),
             "disease_ids": disease_ids + 1,
             "cc_ids": case_ids + 1,                 # matching ids
             "batch_ids" : batch_ids + 1,            # aka study ids
