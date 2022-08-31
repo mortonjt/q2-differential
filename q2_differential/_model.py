@@ -37,15 +37,6 @@ def relabel(x):
     return ids, encoder
 
 
-def swap_classes(ids, encoder, reference):
-    reference_cat = encoder.transform([reference])
-    first_cat = encoder.classes_[0]
-    ids = _swap(ids, first_cat, reference_cat)
-    classes_ = encoder.classes_.copy()
-    encoder.classes_ = _swap(classes_, classes_[0], reference)
-    return ids, encoder
-
-
 class DiseaseSingle(SingleFeatureModel):
     """A model includes multiple diseases.
 
