@@ -23,12 +23,12 @@ def negative_binomial_rvs(mu, alpha, state=None):
     return nbinom.rvs(n, p, random_state=state)
 
 
-def _case_control_negative_binomial_sim(n=40, b=2, d=4, depth=50,
+def _case_control_negative_binomial_sim(n=100, b=2, d=10, depth=50,
                                         disp_scale = 0.1,
-                                        batch_scale = 0.1,
+                                        batch_scale = 3,
                                         diff_scale = 1,
                                         control_loc = None,
-                                        control_scale = 0.1,
+                                        control_scale = 3,
                                         state=None, params=dict()):
     """ Simulate case-controls from Negative Binomial distribution
     Parameters
@@ -45,18 +45,20 @@ def _case_control_negative_binomial_sim(n=40, b=2, d=4, depth=50,
        Random number generator.
     params : dict
        Dictionary of parameters to initialize simulations
+
     Returns
     -------
     table : pd.DataFrame
         Simulated counts
     md : pd.DataFrame
-        Simulated metadata
+        Simulated metadata.  `cc_bool` indicates which disease id.
+        `cc_id` indicates case-control matching.
     diff : pd.DataFrame
         Ground truth differentials
     """
     if state is None:
         state = np.random.RandomState(0)
-    else:
+    elif isinstance(state, int):
         state = np.random.RandomState(state)
 
     # dimensionality
@@ -64,16 +66,18 @@ def _case_control_negative_binomial_sim(n=40, b=2, d=4, depth=50,
     # setup scaling parameters
     if control_loc is None:
         control_loc = np.log(1 / d)
-    eps = 0.1      # random effects for intercepts
+    eps = 1      # random effects for intercepts
     delta = 0.1    # size of overdispersion
     # setup priors
     a1 = state.normal(eps, eps, size=d)
     diff = params.get('diff', state.normal(0, diff_scale, size=d))
-    disp = params.get('disp', state.lognormal(np.log(delta), disp_scale, size=(3, d)))
+    disp = params.get('disp', state.lognormal(np.log(delta), disp_scale, size=(2, d)))
     batch_mu = params.get('batch_mu', state.normal(0, 1, size=(b, d)))
-    batch_disp = params.get('batch_disp', state.lognormal(np.log(delta), batch_scale, size=(b, d)))
-    control_mu = params.get('control_mu', state.normal(control_loc, 1, size=(d)))
-    control_sigma = params.get('control_sigma', state.lognormal(np.log(delta), control_scale, size=(d)))
+    batch_disp = params.get(
+        'batch_disp', state.lognormal(np.log(delta), batch_scale, size=(b, d)))
+    control_mu = params.get('control_mu', state.normal(control_loc, 3, size=(d)))
+    control_sigma = params.get(
+        'control_sigma', state.lognormal(0, control_scale, size=(d)))
     control = np.vstack([state.normal(control_mu, control_sigma) for _ in range(c)])
 
     depth = np.log(state.poisson(depth, size=n))
@@ -85,24 +89,16 @@ def _case_control_negative_binomial_sim(n=40, b=2, d=4, depth=50,
         batch_ids,
         np.array([b - 1] * (n - len(batch_ids)))
     )).astype(np.int64)
-    #cc_bool = np.repeat(np.arange(b+1), bs//2)  # healthy or disease1 or disease2
-    #disease1 a = [0,1], disease2 b = [0,2]
-    array_d1 = np.array([0,1])
-    array_d2 = np.array([0,2])
-    ss_half = bs // 2
-    cc_bool = np.concatenate((np.tile(array_d1, ss_half),np.tile(array_d2,ss_half)))
-    #cc_bool = np.arange(n) % 3 #healthy or disease1 or disease2
+    cc_bool = np.arange(n) % 2  # case or control
     cc_ids = np.repeat(np.arange(c), 2)
     y = np.zeros((n, d))
-    #print(y)
     # model simulation
-    #TO DO: modify this to simulate multiple diseases
     for s in range(n):
         for i in range(d):
             # control counts
             lam = depth[s] + batch_mu[batch_ids[s], i] + control[cc_ids[s], i]
             # case counts (if applicable)
-            if cc_bool[s] > 0:
+            if cc_bool[s] == 1:
                 lam += diff[i]
             alpha = (np.exp(a1[i]) / np.exp(lam))
             alpha += disp[cc_bool[s], i]
@@ -116,6 +112,6 @@ def _case_control_negative_binomial_sim(n=40, b=2, d=4, depth=50,
     md = pd.DataFrame({'cc_bool': cc_bool.astype(np.str),
                        'cc_ids': cc_ids.astype(np.str),
                        'batch_ids': batch_ids.astype(np.str)},
-                       index=sids)
+                      index=sids)
     md.index.name = 'sample id'
-    return table, md,diff
+    return table, md, diff

@@ -8,6 +8,7 @@ data {
   int cc_ids[N];          // control ids
   int batch_ids[N];       // batch ids
   int disease_ids[N];     // disease ids
+  int reference;          // reference disease category (i.e. healthy group)
   // priors
   real diff_scale;
   real disp_scale;
@@ -26,7 +27,7 @@ parameters {
   real<lower=0> batch_disp[B];       // per batch dispersion
   real<offset=control_loc, multiplier=3> control_mu;              // log control proportions (prior mean)
   real control_sigma;                                             // log control proportions (prior std)
-  vector<offset=control_mu, multiplier=control_sigma>[C] control; // log control proportions  
+  vector<offset=control_mu, multiplier=control_sigma>[C] control; // log control proportions
 
 }
 
@@ -37,13 +38,14 @@ transformed parameters {
 
   for (n in 1:N) {
     real delta = 0;
-    if (disease_ids[n] > 1){ 
-    // if not control
+    if (disease_ids[n] != reference){
+        // if not control
         delta = diff[disease_ids[n]];
     }
     lam[n] = slog[n] + control[cc_ids[n]] + delta + batch_mu[batch_ids[n]];
+    // commenting out for debugging
     phi[n] = inv(exp(a1 - lam[n]) + disease_disp[disease_ids[n]] + batch_disp[batch_ids[n]]);
-    //phi[n] = inv(disp[cc_bool[n] + 1]);
+
   }
 }
 
@@ -51,7 +53,7 @@ model {
   // setting priors ...
   a1 ~ normal(1, 1);
   disease_disp ~ lognormal(log(0.1), disp_scale);
-  batch_mu ~ normal(0, 3);
+  batch_mu ~ normal(0, 1);
   batch_disp ~ lognormal(log(0.1), batch_scale);
   //disp ~ lognormal(log(10), disp_scale);
   diff ~ normal(0, diff_scale);
