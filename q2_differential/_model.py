@@ -109,7 +109,7 @@ class DiseaseSingle(SingleFeatureModel):
             "B" : B,
             "D" : D,
             "slog": slog,
-            "reference" : int(disease_encoder.transform([reference])),
+            "reference" : int(disease_encoder.transform([reference])) + 1,
             "disease_ids": disease_ids + 1,
             "cc_ids": case_ids + 1,                 # matching ids
             "batch_ids" : batch_ids + 1,            # aka study ids
