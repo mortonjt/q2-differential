@@ -63,8 +63,8 @@ class DiseaseSingle(SingleFeatureModel):
                  alpha_s : float = 1,
                  diff_scale = 1,
                  disp_scale = 0.1,
-                 num_iter: int = 500,
-                 num_warmup: int = None,
+                 num_iter: int = 100,
+                 num_warmup: int = 1000,
                  normalization: str = 'depth',
                  chains: int = 4,
                  seed: float = 42):
