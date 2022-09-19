@@ -25,7 +25,7 @@ parameters {
   real<lower=0> disease_disp[D];   // per microbe quadratic dispersion for all diseases
   real batch_mu[B];                  // per batch bias
   real<lower=0> batch_disp[B];       // per batch dispersion
-  real<offset=control_loc, multiplier=3> control_mu;              // log control proportions (prior mean)
+  real<offset=control_loc, multiplier=control_sigma> control_mu;              // log control proportions (prior mean)
   real<lower=0> control_sigma;                                    // log control proportions (prior std)
   vector<offset=control_mu, multiplier=3>[C] control; // log control proportions
 
