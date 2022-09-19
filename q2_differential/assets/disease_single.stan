@@ -26,8 +26,8 @@ parameters {
   real batch_mu[B];                  // per batch bias
   real<lower=0> batch_disp[B];       // per batch dispersion
   real<offset=control_loc, multiplier=3> control_mu;              // log control proportions (prior mean)
-  real control_sigma;                                             // log control proportions (prior std)
-  vector<offset=control_mu, multiplier=control_sigma>[C] control; // log control proportions
+  real<lower=0> control_sigma;                                    // log control proportions (prior std)
+  vector<offset=control_mu, multiplier=3>[C] control; // log control proportions
 
 }
 
@@ -44,8 +44,8 @@ transformed parameters {
     }
     lam[n] = slog[n] + control[cc_ids[n]] + delta + batch_mu[batch_ids[n]];
     // commenting out for debugging
-    phi[n] = inv(exp(a1 - lam[n]) + disease_disp[disease_ids[n]] + batch_disp[batch_ids[n]]);
-
+    //phi[n] = inv(exp(a1 - lam[n]) + disease_disp[disease_ids[n]] + batch_disp[batch_ids[n]]);
+    phi[n] = inv(exp(a1 - lam[n]));
   }
 }
 
@@ -59,7 +59,7 @@ model {
   diff ~ normal(0, diff_scale);
   // vague normal prior for controls
   control_mu ~ normal(control_loc, 3);
-  control_sigma ~ lognormal(0, control_scale);
+  //control_sigma ~ lognormal(0, control_scale);
   control ~ normal(control_mu, control_sigma);
 
   // generating counts

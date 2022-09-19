@@ -31,7 +31,7 @@ params = {
     'control_sigma': state.lognormal(np.log(delta), control_scale, size=(d))
 }
 t1, m1, d1 = _case_control_negative_binomial_sim(
-    n=80, d=d, b=1, depth=1000, diff_scale=1, params=params, state=state)
+    n=200, d=d, b=1, depth=1000, diff_scale=1, params=params, state=state)
 #t2, m2, d2 = _case_control_negative_binomial_sim(
 #    n=40, d=d, b=1, depth=1000, diff_scale=1, params=params, state=state)
 # rename diseases
@@ -68,7 +68,7 @@ models = ModelIterator(
     reference='0',
     chains=4,
     num_iter=100,
-    num_warmup=1000)
+    num_warmup=2000)
 coords = {'feature' : biomT.ids(axis='observation')}
 
 samples = []
@@ -95,7 +95,7 @@ res_diff_5 = (posterior['posterior']['diff']
               .groupby(['feature', 'disease_ids'])
               .agg(lambda x: np.percentile(x, 5))
               .reset_index()
-              .query("disease_ids != '0'")
+              .query("disease_ids != '1'")
               .set_index(['feature', 'disease_ids'])['diff']
               .sort_index())
 res_diff_95 = (posterior['posterior']['diff']
@@ -104,7 +104,7 @@ res_diff_95 = (posterior['posterior']['diff']
                .groupby(['feature', 'disease_ids'])
                .agg(lambda x: np.percentile(x, 95))
                .reset_index()
-               .query("disease_ids != '0'")
+               .query("disease_ids != '1'")
                .set_index(['feature', 'disease_ids'])['diff']
                .sort_index())
 

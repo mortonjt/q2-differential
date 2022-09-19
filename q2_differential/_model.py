@@ -157,7 +157,7 @@ class DESeq2(TableModel):
                  beta_s : float = 1,
                  alpha_s : float = 1,
                  num_iter: int = 500,
-                 num_warmup: int = None,
+                 num_warmup: int = 1000,
                  normalization: str = 'depth',
                  chains: int = 4,
                  seed: float = 42):
@@ -237,7 +237,7 @@ class SingleDESeq2(SingleFeatureModel):
         other = list(set(cats) - {reference})[0]
         slog = _normalization_func(table, normalization)
         control_loc = np.log(1. / len(table.ids(axis='observation')))
-        control_scale = 5
+        control_scale = 1
         param_dict = {
             "slog": slog,
             "M": cats,
@@ -267,5 +267,5 @@ class SingleDESeq2(SingleFeatureModel):
 def _single_func(x):
     fid, m = x
     m.compile_model()
-    m.fit_model()
-    return m.to_inference_object()
+    m.fit_model({'adapt_delta': 0.99, 'max_treedepth': 20})
+    return m.to_inference()
