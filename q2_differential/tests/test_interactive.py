@@ -98,6 +98,7 @@ res_diff_5 = (posterior['posterior']['diff']
               .query("disease_ids == '1'")
               .set_index(['feature', 'disease_ids'])['diff']
               .sort_index())
+print('res_diff_5.values',res_diff_5.values)
 res_diff_95 = (posterior['posterior']['diff']
                .to_dataframe()
                .reset_index()[['feature', 'disease_ids', 'diff']]
@@ -107,7 +108,8 @@ res_diff_95 = (posterior['posterior']['diff']
                .query("disease_ids == '1'")
                .set_index(['feature', 'disease_ids'])['diff']
                .sort_index())
-
+print('res_diff_95.values',res_diff_95.values)
+print('exp_diffs.values',exp_diffs.values)
 # check to see if the majority of ground truth log-fold changes are within
 # the 95% confidence intervals
 assert np.mean(res_diff_5.values < exp_diffs.values) >= 0.9
