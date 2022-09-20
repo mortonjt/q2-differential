@@ -59,7 +59,7 @@ model {
   diff ~ normal(0, diff_scale);
   // vague normal prior for controls
   control_mu ~ normal(control_loc, 3);
-  //control_sigma ~ lognormal(0, control_scale);
+  control_sigma ~ lognormal(0, control_scale);
   control ~ normal(control_mu, control_sigma);
 
   // generating counts
