@@ -21,7 +21,7 @@ from q2_differential._model import _swap, DiseaseSingle
 import pytest
 
 
-d = 4
+d = 10
 delta = 0.1
 control_loc = np.log(1/d)
 control_scale = 1
@@ -31,7 +31,7 @@ params = {
     'control_sigma': state.lognormal(np.log(delta), control_scale, size=(d))
 }
 t1, m1, d1 = _case_control_negative_binomial_sim(
-    n=80, d=d, b=1, depth=1000, diff_scale=1, params=params, state=state)
+    n=200, d=d, b=1, depth=1000, diff_scale=1, params=params, state=state)
 #t2, m2, d2 = _case_control_negative_binomial_sim(
 #    n=40, d=d, b=1, depth=1000, diff_scale=1, params=params, state=state)
 # rename diseases
@@ -93,22 +93,22 @@ res_diff_5 = (posterior['posterior']['diff']
               .to_dataframe()
               .reset_index()[['feature', 'disease_ids', 'diff']]
               .groupby(['feature', 'disease_ids'])
-              .agg(lambda x: np.percentile(x, 5))
+              .quantile(0.05)
               .reset_index()
-              .query("disease_ids != '0'")
+              .query("disease_ids == '1'")
               .set_index(['feature', 'disease_ids'])['diff']
               .sort_index())
 res_diff_95 = (posterior['posterior']['diff']
                .to_dataframe()
                .reset_index()[['feature', 'disease_ids', 'diff']]
                .groupby(['feature', 'disease_ids'])
-               .agg(lambda x: np.percentile(x, 95))
+               .quantile(0.95)
                .reset_index()
-               .query("disease_ids != '0'")
+               .query("disease_ids == '1'")
                .set_index(['feature', 'disease_ids'])['diff']
                .sort_index())
 
-# check to see if the ground truth log-fold changes are within
+# check to see if the majority of ground truth log-fold changes are within
 # the 95% confidence intervals
-assert all(res_diff_5 < exp_diffs)
-assert all(res_diff_95 > exp_diffs)
+assert np.mean(res_diff_5.values < exp_diffs.values) >= 0.9
+assert np.mean(res_diff_95.values > exp_diffs.values) >= 0.9
