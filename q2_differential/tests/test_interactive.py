@@ -18,6 +18,8 @@ from q2_differential._matching import _matchmaker
 from skbio.stats.composition import alr_inv, clr
 from multiprocessing import Pool
 from q2_differential._model import _swap, DiseaseSingle
+from scipy.stats import pearsonr
+
 import pytest
 
 
@@ -108,7 +110,20 @@ res_diff_95 = (posterior['posterior']['diff']
                .set_index(['feature', 'disease_ids'])['diff']
                .sort_index())
 
+res_mean = (posterior['posterior']['diff']
+               .to_dataframe()
+               .reset_index()[['feature', 'disease_ids', 'diff']]
+               .groupby(['feature', 'disease_ids'])
+               .mean()
+               .reset_index()
+               .query("disease_ids == '1'")
+               .set_index(['feature', 'disease_ids'])['diff']
+               .sort_index())
+
 # check to see if the majority of ground truth log-fold changes are within
 # the 95% confidence intervals
 assert np.mean(res_diff_5.values < exp_diffs.values) >= 0.9
 assert np.mean(res_diff_95.values > exp_diffs.values) >= 0.9
+
+r, p = pearsonr(res_mean, exp_diffs)
+assert r > 0.9
