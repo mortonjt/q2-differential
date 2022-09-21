@@ -42,7 +42,7 @@ transformed parameters {
         // if not control
         delta = diff[disease_ids[n]];
     }
-    lam[n] = slog[n] + control[cc_ids[n]] + delta + batch_mu[batch_ids[n]];
+    lam[n] = slog[n] + log_inv_logit(control[cc_ids[n]] + delta + batch_mu[batch_ids[n]]);
     // commenting out for debugging
     //phi[n] = inv(exp(a1 - lam[n]) + disease_disp[disease_ids[n]] + batch_disp[batch_ids[n]]);
     phi[n] = inv(exp(a1 - lam[n]));
